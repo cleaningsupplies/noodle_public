@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700;6..96,800&display=swap');
+
+:root{
+    --base_font_color: #262626;
+
+    --base_grey_primary: #262626;
+    --base_grey_secondary: #505050;
+
+    --base_beige_primary: #C5B39D;
+    --base_beige_secondary: #E6DCD2;
+
+    --base_green_primary: #63561D;
+    --base_green_secondary: #C3AC63;
+
+    --base_font_family: 'Bodoni Moda', serif;
+}
+
+body, html{
+    height: 100%;
+    background-color: var(--base_grey_primary);
+    margin: 0;
+    color: var(--base_grey_primary);
+    font-family:  var(--base_font_family);
+}
+
+.header{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    box-shadow: inset 0 4vw 3vw -3vw rgba(0,0,0,0.8);
+}
+
+.brand{
+    color: var(--base_beige_secondary);
+    font-size: 2vw;
+    position: absolute;
+    margin-left: 3%;
+}
+
+.nav{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+}
+
+.nav a{
+    text-decoration: none;
+    color: var(--base_beige_secondary);
+    font-size: 2vw;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.first{
+    background: url("images/noodle.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset -50vw 0 35vw -2vw rgba(0,0,0,0.8);
+}
+
+.first .content{
+    color: var(--base_beige_secondary);
+    font-size: 10vh;
+    float: right;
+}
+
+.second{
+    height: 100%;
+}
+
+.third{
+    height: 100%;
+    background-color: var(--base_grey_secondary);
+}
