@@ -38,13 +38,9 @@ header{
     padding: 20px;
     height: 10%;
     box-shadow: inset 0 4vw 3vw -3vw rgba(0,0,0,0.8);
-    text-align: center;
-}
-
-nav{
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 header a{
@@ -55,17 +51,27 @@ header a{
     margin-right: 20px;
 }
 
-#logo{
+nav a:hover{
+    color: var(--base_beige_secondary);
+}
+
+.logo{
     position: absolute;
-    margin: 0;
     left: 2%;
-    color: #E6DCD2;
+}
+
+.logo a{
+    margin-left: 0;
+    color: var(--base_beige_secondary);
+}
+
+#logo{
+    height: 40px;
 }
 
 /* page indicator left side */
 
 .page_indicator{
-    color: var(--base_beige_primary);
     font-size: 8vh;
     font-weight: 700;
     width: 5%;
@@ -73,6 +79,16 @@ header a{
     position: absolute;
     top: 45%;
     line-height: 50%;
+   
+}
+
+.page_indicator a{
+    color: var(--base_beige_primary);
+    text-decoration: none;
+}
+
+.page_indicator a:hover{
+    color: var(--base_beige_secondary);
 }
 
 #indicator_1, #home{
