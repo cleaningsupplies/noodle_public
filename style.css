@@ -44,6 +44,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.3s;
 }
 
 /* all text elements in header*/
@@ -54,6 +55,7 @@ header a{
     font-size: 5vh;
     margin-left: 20px;
     margin-right: 20px;
+    transition: 0.3s;
 }
 
 /* nav items */
@@ -70,6 +72,10 @@ nav a:hover{
 .logo a{
     margin-left: 0;
     color: var(--base_beige_secondary);
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity 600ms, visibility 600ms;
+    transition: opacity 600ms, visibility 600ms;
 }
 
 .logo img{
@@ -116,11 +122,11 @@ nav a:hover{
 
 .first{
     position: absolute;
-    top: 65%;
+    top: 73%;
     right: 5%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    width:50%;
+    width:91%;
 }
 
 .first .content{
@@ -146,15 +152,18 @@ nav a:hover{
 
 @media only screen and (max-width: 1052px) {
     .logo a{
-        display: none;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: opacity 600ms, visibility 600ms;
+        transition: opacity 600ms, visibility 600ms;
     }
 }
 
 /*todo change nav here*/
 @media only screen and (max-width: 884px) {
     body{
-        box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
-                    inset 46vw 0 49vw -5vw rgba(0, 0, 0, 0.8), 
+        box-shadow: inset -58vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
+                    inset 13vw 0 44vw 9vw rgba(0, 0, 0, 0.8), 
                     inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
     }
 
