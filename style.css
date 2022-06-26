@@ -33,6 +33,7 @@ body{
     box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
                 inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
                 inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+    transition: 0.3s;
 }
 
 /* header woth navigation and logo */
@@ -53,7 +54,6 @@ header a{
     font-size: 5vh;
     margin-left: 20px;
     margin-right: 20px;
-    transition: 0.3s;
 }
 
 /* nav items */
@@ -109,6 +109,7 @@ nav a:hover{
 
 #home{
     color: var(--base_beige_secondary);
+    transition: 0.3s;
 }
 
 /* landing page */
@@ -141,4 +142,30 @@ nav a:hover{
 .history .l2{
     font-size: 3vh ;
     line-height: 80%;
+}
+
+@media only screen and (max-width: 1052px) {
+    .logo a{
+        display: none;
+    }
+}
+
+/*todo change nav here*/
+@media only screen and (max-width: 884px) {
+    body{
+        box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
+                    inset 46vw 0 49vw -5vw rgba(0, 0, 0, 0.8), 
+                    inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+    }
+
+    header a{
+        float: right;
+        width: 55%;
+        text-align: right;
+
+    }
+
+    #home{
+        margin-top: 20%;
+    }
 }
