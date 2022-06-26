@@ -45,6 +45,8 @@ header{
     justify-content: center;
 }
 
+/* all text elements in header*/
+
 header a{
     text-decoration: none;
     color: var(--base_beige_primary);
@@ -53,6 +55,8 @@ header a{
     margin-right: 20px;
     transition: 0.3s;
 }
+
+/* nav items */
 
 nav a:hover{
     color: var(--base_beige_secondary);
@@ -68,7 +72,7 @@ nav a:hover{
     color: var(--base_beige_secondary);
 }
 
-#logo{
+.logo img{
     height: 40px;
 }
 
@@ -96,6 +100,8 @@ nav a:hover{
 .indicator:hover{
     background-color: var(--base_beige_secondary);
 }
+
+/* TODO in JS */
 
 #indicator_1{
     background-color: var(--base_beige_secondary);
@@ -127,12 +133,12 @@ nav a:hover{
     float: right;
 }
 
-.history .primary{
+.history .l1{
     font-size: 5vh ;
     line-height: 90%;
 }
 
-.history .secondary{
+.history .l2{
     font-size: 3vh ;
     line-height: 80%;
 }
