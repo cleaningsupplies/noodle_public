@@ -44,7 +44,6 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.3s;
 }
 
 /* all text elements in header*/
@@ -60,9 +59,25 @@ header a{
 
 /* nav items */
 
-nav a:hover{
+header a:hover{
     color: var(--base_beige_secondary);
 }
+
+.navigation a.active {
+    color: var(--base_beige_secondary);
+}
+  
+.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    height: 10%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
 
 .logo{
     position: absolute;
@@ -113,11 +128,6 @@ nav a:hover{
     background-color: var(--base_beige_secondary);
 }
 
-#home{
-    color: var(--base_beige_secondary);
-    transition: 0.3s;
-}
-
 /* landing page */
 
 .first{
@@ -127,6 +137,7 @@ nav a:hover{
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     width:91%;
+    transition: 0.3s ease-out;
 }
 
 .first .content{
@@ -150,14 +161,6 @@ nav a:hover{
     line-height: 80%;
 }
 
-@media only screen and (max-width: 1052px) {
-    .logo a{
-        opacity: 0;
-        visibility: hidden;
-        -webkit-transition: opacity 600ms, visibility 600ms;
-        transition: opacity 600ms, visibility 600ms;
-    }
-}
 
 /*todo change nav here*/
 @media only screen and (max-width: 884px) {
@@ -167,14 +170,28 @@ nav a:hover{
                     inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
     }
 
-    header a{
-        float: right;
-        width: 55%;
+    .navigation a {
+        display: none;
+    }
+
+    .icon {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .navigation.responsive {
+        position: absolute;
+        right: 0;
+        top: 10%;
+        padding: 20px;
+    }
+
+    .navigation.responsive a {
+        display: block;
         text-align: right;
-
     }
 
-    #home{
-        margin-top: 20%;
-    }
 }
+
+  
+

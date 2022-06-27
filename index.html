@@ -9,22 +9,27 @@
     <body>
         <header>
             <div class="logo">
-                <img src="images/noodlee.png">
-                <a href="/home">noodlee</a>
+                <a href="#home"><img src="images/noodlee.png">noodlee</a>
             </div>
 
-            <nav>
-                <a id="home" href="/home">home</a>
-                <a id="menu" href="/menu">menu</a>
-                <a id="reservation" href="/reservation">reservation</a>
-            <nav>
+            <nav class="navigation" id="navigation">
+                <a href="#home" class="active">home</a>
+                <a href="#menu">menu</a>
+                <a href="#reservation">reservation</a>
+                
+            </nav>
 
+            <a href="javascript:void(0);" class="icon" onclick="openNavigation()">
+                &#x2630;
+            </a>
         </header>
 
+        
+
         <div class="page_indicator">
-            <span><a href="/home" class="indicator" id="indicator_1"></a></span>
-            <span><a href="/history" class="indicator" id="indicator_2"></a></span>
-            <span><a href="/today" class="indicator" id="indicator_3"></a></span>
+            <span><a href="#home" class="indicator" id="indicator_1"></a></span>
+            <span><a href="#history" class="indicator" id="indicator_2"></a></span>
+            <span><a href="#today" class="indicator" id="indicator_3"></a></span>
         </div>
     
         <div class="first">
