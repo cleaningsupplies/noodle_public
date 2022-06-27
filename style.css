@@ -33,7 +33,7 @@ body{
     box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
                 inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
                 inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
-    transition: 0.3s;
+    transition: 1s;
 }
 
 /* header woth navigation and logo */
@@ -165,9 +165,11 @@ header a:hover{
 /*todo change nav here*/
 @media only screen and (max-width: 884px) {
     body{
-        box-shadow: inset -58vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
+         /* shadow queue: right, left, top */
+        box-shadow: inset -58vw 0 61vw -9vw rgba(0, 0, 0, 0.8), 
                     inset 13vw 0 44vw 9vw rgba(0, 0, 0, 0.8), 
                     inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+                    
     }
 
     .navigation a {
