@@ -116,6 +116,9 @@ header a:hover{
     display: block;
     margin: 20px;
     transition: 0.3s;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .indicator:hover{
@@ -124,7 +127,7 @@ header a:hover{
 
 /* TODO in JS */
 
-#indicator_1{
+.indicator.active{
     background-color: var(--base_beige_secondary);
 }
 
