@@ -61,18 +61,22 @@ function removeActiveSubpage(){
 
 function switchToSite(site){
   console.log(site);
+  setAllToNone();
   switch(site){
     case "home": 
-    
-      //body.style.background=null;
+      document.querySelector(".home").style.display ="flex";
       break;
     case "menu": break;
     case "reservation": break;
     case "history": 
-      document.querySelector(".home").style.display ="none";
-      document.querySelector(".history").style.display ="inline";
+      document.querySelector(".history").style.display ="flex";
       break;
     case "today": break;
     default: switchToSite("home"); break;
   }
+}
+
+function setAllToNone(){
+  document.querySelector(".home").style.display ="none";
+  document.querySelector(".history").style.display ="none";
 }
