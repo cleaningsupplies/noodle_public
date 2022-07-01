@@ -3,11 +3,13 @@ const logo = document.querySelector(".logo");
 const hamburger_menu = document.querySelector(".icon");
 const home_default = document.getElementsByClassName("active")[0];
 const indicators = document.querySelectorAll(".indicator");
+const homeContent = document.querySelector(".home .content");
 
 hamburger_menu.addEventListener("click", openNavigation);
 navItems.forEach(item => item.addEventListener("click", switchActive));
 logo.addEventListener("click", backToHome);
 indicators.forEach(indicator => indicator.addEventListener("click", switchActiveSubPage))
+//homeContent.addEventListener("click", switchToSite("test"));
 
 //changing between responsive or normal layout
 function openNavigation() {
@@ -33,8 +35,7 @@ function switchActive(event){
   removeActive();
   event.target.classList.add("active");
   let value = event.target.getAttribute("value");
-  console.log(value);
-  //TODO: switch to site
+  switchToSite(value);
 }
 
 function removeActive(){
@@ -46,7 +47,7 @@ function switchActiveSubPage(event){
   removeActiveSubpage();
   event.target.className += " active";
   let value = event.target.getAttribute("value");
-  
+  switchToSite(value);
   //TODO switch to subpage
 }
 
@@ -59,15 +60,17 @@ function removeActiveSubpage(){
 }
 
 function switchToSite(site){
-  const body = document.body;
+  console.log(site);
   switch(site){
     case "home": 
-      body.style.background=null;
+    
+      //body.style.background=null;
       break;
     case "menu": break;
     case "reservation": break;
     case "history": 
-      body.style.background="none";
+      document.querySelector(".home").style.display ="none";
+      document.querySelector(".history").style.display ="inline";
       break;
     case "today": break;
     default: switchToSite("home"); break;
