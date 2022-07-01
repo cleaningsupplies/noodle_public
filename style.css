@@ -220,9 +220,6 @@ header a:hover{
     font-size: 5vw;;
 }
 
-
-
-
 /* responsiveness */
 @media only screen and (max-width: 884px) {
     .home{
