@@ -17,15 +17,15 @@
 
 body, html{
     position: relative;
-   
     background-color: var(--base_grey_primary);
     margin: 0;
     color: var(--base_grey_primary);
     font-family: var(--base_font_family);  
     z-index: -20;
+    /*
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-content: center;*/
 }
 
 /* header with navigation and logo */
@@ -62,20 +62,12 @@ header a:hover{
 }
   
 .icon {
-
-    /*
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 20px;
-    height: 10%;*/
     position: absolute;
     right: 8%;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
 }
-
 
 .logo{
     position: absolute;
@@ -174,8 +166,6 @@ header a:hover{
     z-index: -1;
     height: calc(100vh);
     width: 100%;
-    left: 0px;
-    top: 0px;
     color: var(--base_beige_secondary);
     background-color: var(--base_grey_primary);
     justify-content: center;
@@ -191,7 +181,6 @@ header a:hover{
     height: 100%;
     width: 90%;
     display: flex;
-    margin-top: 3%;
     justify-content: right;
     align-items: center;
 }
@@ -221,6 +210,59 @@ header a:hover{
 }
 
 .history .l1{
+    font-size: 5vw;;
+}
+
+/* site TODAY */
+.today{
+    z-index: -1;
+    height: calc(100vh);
+    width: 100%;
+    color: var(--base_beige_secondary);
+    background-color: var(--base_grey_primary);
+    justify-content: center;
+    align-items: center;
+    /* shadow queue: right, left, top */
+    box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
+                inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
+                inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+    transition: 1s;
+}
+
+.today .content {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 6%;
+}
+
+.today .content .img{
+    width: 40vw;
+    height: 40vw;
+    background: url("images/fields.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    /* shadow queue: right, left, top */
+    box-shadow: inset 19vw 0 27vw 0 rgba(12, 7, 5, 0.8);
+}
+
+.today .content img{
+    width: 40%;
+}
+
+.today .content .text{
+    width: 60%;
+    font-size: 1.7vw;
+    text-align: justify;
+    position: absolute;
+    right:6%;
+}
+
+.today .l1{
     font-size: 5vw;;
 }
 
