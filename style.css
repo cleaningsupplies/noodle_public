@@ -6,6 +6,7 @@
     --base_grey_primary: #262626;
     --base_grey_secondary: #505050;
 
+    --base_beige_dark: #453d34;
     --base_beige_primary: #9a866f;
     --base_beige_secondary: #E6DCD2;
 
@@ -225,7 +226,7 @@ header a:hover{
     /* shadow queue: right, left, top */
     box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
                 inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
-                inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+                inset 0 -8vw 16vw -7vw rgba(0, 0, 0, 0.8);
     transition: 1s;
 }
 
@@ -241,13 +242,13 @@ header a:hover{
 .today .content .img{
     width: 40vw;
     height: 40vw;
-    background: url("images/fields.jpg");
+    background: url("images/brooklyn.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px;
     /* shadow queue: right, left, top */
-    box-shadow: inset 19vw 0 27vw 0 rgba(12, 7, 5, 0.8);
+    box-shadow: inset -15vw -1vw 11vw -2vw rgba(18, 13, 4, 0.7);
 }
 
 .today .content img{

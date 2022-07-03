@@ -19,6 +19,26 @@ logo.addEventListener("click", backToHome);
 indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
 document.addEventListener("scroll", scrollSubSite);
 
+// --EXCEPTIONS--
+
+homeContent.addEventListener("click", ()=> {
+  window.scroll({
+    top: scrollTo("history"),
+    left: 0,
+    behavior: 'smooth'
+  });
+});
+
+function backToHome(){
+  removeActiveSubpage();
+  indicators[0].className += " active";
+  cameFromSwitch = true;
+  window.scroll({
+    top: scrollTo("home"),
+    left: 0,
+    behavior: 'smooth'
+  });
+}
 
 // --INIDCATORS/SUBSITES--
 
@@ -55,8 +75,7 @@ function scrollSubSite(){
     window.scroll({
       top: scrollTo(value),
       left: 0,
-      behavior: 'smooth',
-      userHasScrolled: false
+      behavior: 'smooth'
     });
   }
   setTimeout(()=>cameFromSwitch=false,200);
@@ -72,7 +91,6 @@ function switchSubSite(event){
       left: 0,
       behavior: 'smooth'
     });
-    
 }
 
 function scrollTo(element){
@@ -102,16 +120,12 @@ function removeActiveSubpage(){
   });
 }
 
+
+
 // --SITES--
 
 //clicking logo on left
-function backToHome(){
-  removeActive();
-  home_default.classList.add("active");
-  removeActiveSubpage();
-  indicators[0].className += " active";
-  //switchSite("home");
-}
+
 
 function switchActive(event){
   removeActive();
@@ -124,10 +138,6 @@ function removeActive(){
   let active = document.getElementsByClassName("active");
   active[0].classList.remove("active");
 }
-
-
-
-
 
 function switchToSite(site){
   switch(site){
