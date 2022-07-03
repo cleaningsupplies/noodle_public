@@ -8,65 +8,71 @@ const site_home = document.querySelector(".home");
 const site_history = document.querySelector(".history");
 const site_today = document.querySelector(".today");
 let site_active = "home";
-let lastScrollPosition = pageXOffset;;
+let lastScrollPosition = pageXOffset;
+let cameFromSwitch = false;
+
+// --LISTENERS--
 
 hamburger_menu.addEventListener("click", openNavigation);
 navItems.forEach(item => item.addEventListener("click", switchActive));
 logo.addEventListener("click", backToHome);
-indicators.forEach(indicator => indicator.addEventListener("click", switchActiveSubPage));
-//homeContent.addEventListener("click", switchToSite("test"));
-document.addEventListener("scroll", scrollActiveSubPage);
+indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
+document.addEventListener("scroll", scrollSubSite);
 
-//TODO scroll up or down
-function scrollActiveSubPage(){
 
-  //console.log("up", window.scrollY, site_home.offsetHeight, site_history.offsetHeight);
+// --INIDCATORS/SUBSITES--
 
-  let value ="";
-
-  var st = window.pageYOffset || document.documentElement.scrollTop;
-  if (st > lastScrollPosition){
-    //scroll down
-    if(window.scrollY >= site_home.offsetHeight+50){
-      removeActiveSubpage();
-      indicators[2].classList += " active";
-      value = "today";  
-    }else if (window.scrollY >= 50){
-      removeActiveSubpage();
-      indicators[1].classList += " active";
-      value = "history";  
+function scrollSubSite(){
+  if (!cameFromSwitch) {
+    let value = "";
+    let position = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (position > lastScrollPosition){
+      //scroll down
+      if(window.scrollY >= site_home.offsetHeight+10){
+        removeActiveSubpage();
+        indicators[2].classList += " active";
+        value = "today";  
+      }else if (window.scrollY >= 10){
+        removeActiveSubpage();
+        indicators[1].classList += " active";
+        value = "history";  
+      }
+    } else {
+      //scroll up
+      if(window.scrollY <= site_home.offsetHeight-10){
+        removeActiveSubpage();
+        indicators[0].classList += " active";
+        value = "home";  
+      }else if (window.scrollY >= site_history.offsetHeight-10){
+        removeActiveSubpage();
+        indicators[1].classList += " active";
+        value = "history";  
+      }
     }
-  } else {
-    //scroll up
-    if(window.scrollY <= site_home.offsetHeight-50){
-      removeActiveSubpage();
-      indicators[0].classList += " active";
-      value = "home";  
-    }else if (window.scrollY >= site_history.offsetHeight-50){
-      removeActiveSubpage();
-      indicators[1].classList += " active";
-      value = "history";  
-    }
+    lastScrollPosition = position <= 0 ? 0 : position; 
+    
+    window.scroll({
+      top: scrollTo(value),
+      left: 0,
+      behavior: 'smooth',
+      userHasScrolled: false
+    });
   }
-  lastScrollPosition = st <= 0 ? 0 : st; 
-  
-  window.scroll({
-    top: scrollTo(value),
-    left: 0,
-    behavior: 'smooth'
-  });
+  setTimeout(()=>cameFromSwitch=false,200);
 }
 
-//TODO check
-function switchActiveSubPage(event){
-  removeActiveSubpage();
-  event.target.className += " active";
-  let value = event.target.getAttribute("value");
-  window.scroll({
-    top: scrollTo(value),
-    left: 0,
-    behavior: 'smooth'
-  });
+function switchSubSite(event){
+    removeActiveSubpage();
+    event.target.className += " active";
+    let value = event.target.getAttribute("value");
+    cameFromSwitch = true;
+    window.scroll({
+      top: scrollTo(value),
+      left: 0,
+      behavior: 'smooth'
+    });
+    
 }
 
 function scrollTo(element){
@@ -79,9 +85,11 @@ function scrollTo(element){
       value = site_home.offsetHeight;
       break;
     case "today":
-    value = (site_home.offsetHeight*2); 
-    break;
-    default: scrollTo("home"); break;
+      value = (site_home.offsetHeight*2); 
+      break;
+    default: 
+      scrollTo("home"); 
+      break;
   }
   return value;
 }
@@ -94,12 +102,8 @@ function removeActiveSubpage(){
   });
 }
 
+// --SITES--
 
-
-
-
-
-//switch between sites
 //clicking logo on left
 function backToHome(){
   removeActive();
