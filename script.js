@@ -12,15 +12,14 @@ let lastScrollPosition = pageXOffset;
 let cameFromSwitch = false;
 
 // --LISTENERS--
-
 hamburger_menu.addEventListener("click", openNavigation);
 navItems.forEach(item => item.addEventListener("click", switchActive));
 logo.addEventListener("click", backToHome);
 indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
 document.addEventListener("scroll", scrollSubSite);
+window.addEventListener("resize", responsiveSize);
 
 // --EXCEPTIONS--
-
 homeContent.addEventListener("click", ()=> {
   window.scroll({
     top: scrollTo("history"),
@@ -41,7 +40,6 @@ function backToHome(){
 }
 
 // --INIDCATORS/SUBSITES--
-
 function scrollSubSite(){
   if (!cameFromSwitch) {
     let value = "";
@@ -120,13 +118,45 @@ function removeActiveSubpage(){
   });
 }
 
+/* RESPONSIVENESS */
+//TODO make pretty
+function openNavigation() {
+  var x = document.getElementById("navigation");
+  if (x.className === "navigation") {
+    x.className += " responsive";
+  } else {
+    x.className = "navigation";
+  }
+}
 
+function responsiveSize(){
+  if(window.innerWidth <= 884){
+    //History
+    site_history.className = "rehistory";
+    document.querySelector(".rehistory .content").className = "recontent";
+    document.querySelector(".rehistory .recontent .text").className = "retext";
+    document.querySelector(".rehistory .recontent .img").className = "reimg";
+    //Today
+    site_today.className = "retoday";
+    document.querySelector(".retoday .content").className = "recontent";
+    document.querySelector(".retoday .recontent .text").className = "retext";
+    document.querySelector(".retoday .recontent .img").className = "reimg";
+  }else{
+    //History
+    site_history.className = "history";
+    document.querySelector(".history .recontent").className = "history content";
+    document.querySelector(".history .content .retext").className = "text";
+    document.querySelector(".history .content .reimg").className = "img";
+    //Today
+    site_today.className = "today";
+    document.querySelector(".today .recontent").className = "today content";
+    document.querySelector(".today .content .retext").className = "text";
+    document.querySelector(".today .content .reimg").className = "img";
+  }
+}
 
 // --SITES--
-
-//clicking logo on left
-
-
+//TODO
 function switchActive(event){
   removeActive();
   event.target.classList.add("active");
@@ -154,14 +184,7 @@ function switchToSite(site){
 }
 
 
-/* RESPONSIVENESS */
-//changing between responsive or normal layout
-function openNavigation() {
-  var x = document.getElementById("navigation");
-  if (x.className === "navigation") {
-    x.className += " responsive";
-  } else {
-    x.className = "navigation";
-  }
-}
+
+
+
 
