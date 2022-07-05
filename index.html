@@ -25,44 +25,118 @@
             </a>
         </header>
 
-        <div class="page_indicator">
-            <span><a href="#home" class="indicator active" value="home"></a></span>
-            <span><a href="#history" class="indicator" value="history"></a></span>
-            <span><a href="#today" class="indicator" value="today"></a></span>
-        </div>
-    
-        <div class="home">
-            <div class="content" onclick="switchToSite('history')")>
-                <span class="l1">Our </span>Noodlees'<br>
-                Secret<br>
-                <span class="l2">...is a good pinch of salt and history.</span>
+        <div class="main_page">
+            <div class="page_indicator">
+                <span><a href="#home" class="indicator active" value="home"></a></span>
+                <span><a href="#history" class="indicator" value="history"></a></span>
+                <span><a href="#today" class="indicator" value="today"></a></span>
             </div>
-        </div>
-        <div class="history">
-            <div class="content">
-                <div class="img"></div>
-                <div class="text">
-                    <span class="l1">父亲陈</span><br>
-                    <span class="l2">(Fùqīn Chén, english: Pápa Chen)</span><br>
-                    started working on rice fields as a young boy. He always brought home some of
-                    his harvested rice and helped his mother making her very special rice noodles themselves. 
-                    When she passed he kept on working on the rice fields and tought his children his mothers noodle recipe. 
-                    Not too long the neighbours joined them for dinner almost every day. Chen decided to try himself out. He openend his very first 
-                    restaurant 1999 in Guilin (桂林市) a small city in southern china. His success was not long in coming...
+            <div class="home">
+                <div class="content" onclick="switchToSite('history')")>
+                    <span class="l1">Our </span>Noodlees'<br>
+                    Secret<br>
+                    <span class="l2">...is a good pinch of salt and history.</span>
+                </div>
+            </div>
+            <div class="history">
+                <div class="content">
+                    <div class="img"></div>
+                    <div class="text">
+                        <span class="l1">父亲陈</span><br>
+                        <span class="l2">(Fùqīn Chén, english: Pápa Chen)</span><br>
+                        started working on rice fields as a young boy. He always brought home some of
+                        his harvested rice and helped his mother making her very special rice noodles themselves. 
+                        When she passed he kept on working on the rice fields and tought his children his mothers noodle recipe. 
+                        Not too long the neighbours joined them for dinner almost every day. Chen decided to try himself out. He openend his very first 
+                        restaurant 1999 in Guilin (桂林市) a small city in southern china. His success was not long in coming...
+                    </div>
+                </div>
+            </div>
+            <div class="today">
+                <div class="content">
+                    <div class="img"></div>
+                    <div class="text">
+                        <span class="l1">今天</span><br>
+                        <span class="l2">(Jīntiān, english: today)</span><br>
+                        He employs over 60 people in 5 restaurants across china. His children always by his side helped him expand the familiy restaurant to Brooklyn, NY in 2018
+                        serving delicious rice noodle(e) dishes for every taste. All cooked after his mothers secret recipe. Come and say hi today!
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="today">
-            <div class="content">
-                <div class="img"></div>
-                <div class="text">
-                    <span class="l1">今天</span><br>
-                    <span class="l2">(Jīntiān, english: today)</span><br>
-                    He employs over 60 people in 5 restaurants across china. His children always by his side helped him expand the familiy restaurant to Brooklyn, NY in 2018
-                    serving delicious rice noodle(e) dishes for every taste. All cooked after his mothers secret recipe. Come and say hi today!
+
+        <div class="menu_page" style="display: none">
+            <div class="scroll_nav">.</div>
+            <div class="menu">
+                <div class="content">
+                    <div class="text">simple as that: you choose your very own noodlee bowl from our classic menu.</div>
+                    <table class="main_dishes">
+                        <tr>
+                          <th class="dish">RICE NOODLEES</th>
+                        </tr>
+                        <tr>
+                            <td>vegetables</td>
+                            <td>$ 8</td>
+                        </tr>
+                        <tr>
+                            <td>tofu & vegetables</td> 
+                            <td>$ 10</td>
+                        </tr>
+                        <tr>
+                            <td>chicken</td>
+                            <td>$ 12</td>
+                        </tr>
+                        <tr>
+                            <td>beef</td>
+                            <td>$ 13</td>
+                        </tr>
+                        <tr>
+                            <th class="dish">RAMEN NOODLEES</th>
+                        </tr>
+                        <tr>
+                            <td>vegetables</td>
+                            <td>$ 8</td>
+                        </tr>
+                        <tr>
+                            <td>tofu & vegetables</td> 
+                            <td>$ 10</td>
+                        </tr>
+                        <tr>
+                            <td>chicken</td> 
+                            <td>$ 12</td>
+                        </tr>
+                        <tr>
+                            <td>beef</td>
+                            <td>$ 13</td>
+                        </tr>
+                        <tr>
+                            <th class="dish">UDON NOODLEES</th>
+                        </tr>
+                        <tr>
+                            <td>vegetables</td>
+                            <td>$ 8</td>
+                        </tr>
+                        <tr>
+                            <td>tofu & vegetables</td>
+                            <td>$ 10</td>
+                        </tr>
+                        <tr>
+                            <td>chicken</td> 
+                            <td>$ 12</td>
+                        </tr>
+                        <tr>
+                            <td>beef</td> 
+                            <td>$ 13</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
+
+        <div class="reservation_page" style="display: none">
+            RESERVATION
+        </div>
+        
     </body>
 
     <script src="script.js"></script>
