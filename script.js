@@ -156,12 +156,11 @@ function responsiveSize(){
 }
 
 // --SITES--
-//TODO
 function switchActive(event){
   removeActive();
   event.target.classList.add("active");
   let value = event.target.getAttribute("value");
-  switchToSite(value);
+  switchTo(value);
 }
 
 function removeActive(){
@@ -169,17 +168,18 @@ function removeActive(){
   active[0].classList.remove("active");
 }
 
-function switchToSite(site){
+function switchTo(site){
   switch(site){
     case "home": 
       break;
-    case "menu": break;
-    case "reservation": break;
-    case "history": 
-
+    case "menu": 
+    console.log(site);
       break;
-    case "today": break;
-    default: switchToSite("home"); break;
+    case "reservation": 
+      break;
+    default: 
+      switchToSite("home");
+      break;
   }
 }
 
