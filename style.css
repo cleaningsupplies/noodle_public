@@ -181,7 +181,7 @@ header a:hover{
 .history .content .img{
     width: 40vw;
     height: 40vw;
-    background: url("images/fuqin.jpg");
+    background: url("images/lee.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -315,9 +315,9 @@ header a:hover{
     width: 100%;
     height: 60%;
     position: fixed;
-    color: black;
+    color: #0b0b0b;
      /* shadow queue: right, left, top */
-    box-shadow: inset 0 31vw 6vw -21vw rgb(11, 11, 11);
+    box-shadow: inset 0 39vw 11vw -25vw rgb(11, 11, 11);
 }
 
 /* RESPONSIVENESS */
@@ -332,7 +332,7 @@ header a:hover{
         opacity: 1;
     }
 
-    .navigation.responsive {
+    .navigation.open {
         position: absolute;
         right: 0;
         top: 24%;
@@ -341,10 +341,9 @@ header a:hover{
         padding-bottom: 5%;
         border-radius: 2%;
         background-color: rgba(0, 0, 0, 0.5);
-        /*box-shadow: inset -47vw 0 25vw -14vw rgba(0, 0, 0, 0.7);*/
     }
 
-    .navigation.responsive a {
+    .navigation.open a {
         z-index: 20;
         display: block;
         text-align: right;
@@ -356,6 +355,21 @@ header a:hover{
        box-shadow: inset -58vw 0 61vw -9vw rgba(0, 0, 0, 0.8), 
                    inset 13vw 0 44vw 9vw rgba(0, 0, 0, 0.8), 
                    inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+    }
+
+    .scroll_nav{
+        display: relative;
+        z-index: 1;
+        width: 100%;
+        height: 60%;
+        position: fixed;
+        color: #0b0b0b;
+         /* shadow queue: right, left, top */
+        box-shadow: inset 0 58vw 15vw -29vw #0b0b0b;
+    }
+
+    .main_dishes{
+        width: 90%;
     }
 }
 
@@ -385,7 +399,7 @@ header a:hover{
 .rehistory .recontent .reimg{
     width: 80vw;
     height: 50vw;
-    background: url("images/fuqin.jpg");
+    background: url("images/lee.jpg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,4 +1,5 @@
 const navItems = document.querySelectorAll(".navigation");
+const navigation = document.querySelector("#navigation");
 const logo = document.querySelector(".logo");
 const hamburger_menu = document.querySelector(".icon");
 const home_default = document.getElementsByClassName("active")[0];
@@ -25,21 +26,37 @@ window.addEventListener("resize", responsiveSize);
 // --EXCEPTIONS--
 homeContent.addEventListener("click", ()=> {
   window.scroll({
-    top: scrollTo("history"),
+    top: scro("history"),
     left: 0,
     behavior: 'smooth'
   });
 });
 
 function backToHome(){
-  removeActiveSubpage();
+  
+  //check if on other page than home
+  if(main_page.style.display == ""){
+    window.scrollTo(0,0);
+  }else if(menu_page.style.display == "" || reservation_page.style.display == ""){
+    removeActive();
+    removeActiveSubpage();
+    navigation.children[0].classList.add("active")
+    console.log(1);
+    switchTo("home");
+  }else{
+    removeActive();
+    removeActiveSubpage();
+    console.log(2);
+    cameFromSwitch = true;
+    window.scroll({
+      top: scro("home"),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
   indicators[0].className += " active";
-  cameFromSwitch = true;
-  window.scroll({
-    top: scrollTo("home"),
-    left: 0,
-    behavior: 'smooth'
-  });
+  
+  
 }
 
 // --INIDCATORS/SUBSITES--
@@ -77,7 +94,7 @@ function scrollSubSite(){
       lastScrollPosition = position <= 0 ? 0 : position; 
       
       window.scroll({
-        top: scrollTo(value),
+        top: scro(value),
         left: 0,
         behavior: 'smooth'
       });
@@ -92,13 +109,14 @@ function switchSubSite(event){
     let value = event.target.getAttribute("value");
     cameFromSwitch = true;
     window.scroll({
-      top: scrollTo(value),
+      top: scro(value),
       left: 0,
       behavior: 'smooth'
     });
 }
 
-function scrollTo(element){
+//scrollTo
+function scro(element){
   let value;
   switch(element){
     case "home": 
@@ -111,7 +129,7 @@ function scrollTo(element){
       value = (site_home.offsetHeight*2); 
       break;
     default: 
-      scrollTo("home"); 
+      scro("home"); 
       break;
   }
   return value;
@@ -126,13 +144,11 @@ function removeActiveSubpage(){
 }
 
 /* RESPONSIVENESS */
-//TODO make pretty
 function openNavigation() {
-  var x = document.getElementById("navigation");
-  if (x.className === "navigation") {
-    x.className += " responsive";
+  if (navigation.className === "navigation") {
+    navigation.className += " open";
   } else {
-    x.className = "navigation";
+    navigation.className = "navigation";
   }
 }
 
@@ -164,7 +180,13 @@ function responsiveSize(){
 
 // --SITES--
 function switchActive(event){
+  //when in responsive view and nav item clicked then close navigation again
+  if(navigation.className =="navigation open"){
+    openNavigation();
+  }
+  removeActiveSubpage();
   removeActive();
+  indicators[0].classList += " active";
   event.target.classList.add("active");
   let value = event.target.getAttribute("value");
   switchTo(value);
@@ -176,10 +198,10 @@ function removeActive(){
   menu_page.style.display = "none";
   main_page.style.display = "none";
   reservation_page.style.display = "none";
-  
 }
 
 function switchTo(site){
+  window.scrollTo(0,0);
   switch(site){
     case "home": 
       main_page.style.display = "";
