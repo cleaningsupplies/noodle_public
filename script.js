@@ -1,5 +1,7 @@
 const navItems = document.querySelectorAll(".navigation");
 const navigation = document.querySelector("#navigation");
+const items = navigation.children;
+
 const logo = document.querySelector(".logo");
 const hamburger_menu = document.querySelector(".icon");
 const home_default = document.getElementsByClassName("active")[0];
@@ -15,6 +17,49 @@ let site_active = "home";
 let lastScrollPosition = pageXOffset;
 let cameFromSwitch = false;
 
+navItems.forEach(item => item.addEventListener("click", switchSite));
+logo.addEventListener("click", switchSite);
+
+function switchSite(event){
+    let clicked = event.target;
+    console.log(clicked.innerHTML);
+    removePrevious();
+    switch(clicked.innerHTML){
+      case "home":
+        main_page.style.display = "";
+        break;
+      case "menu":
+        menu_page.style.display = "";
+        break;
+      case "reservation":
+        reservation_page.style.display = "";
+        break;
+      default:
+        main_page.style.display = "";
+        items[0].classList = "active";
+        break;
+    }
+    clicked.classList = "active";
+}
+
+function removePrevious(){
+  for(let i = 0; i < items.length; i++){
+    if(items[i].classList.contains("active")){
+      items[i].classList.remove("active");
+      if (items[i].innerHTML === "home"){
+        main_page.style.display = "none";
+      }else if (items[i].innerHTML === "menu"){
+        menu_page.style.display = "none";
+      }else{
+        reservation_page.style.display = "none";
+      }
+    }
+  } 
+}
+
+
+
+/*
 // --LISTENERS--
 hamburger_menu.addEventListener("click", openNavigation);
 navItems.forEach(item => item.addEventListener("click", switchActive));
@@ -143,7 +188,7 @@ function removeActiveSubpage(){
   });
 }
 
-/* RESPONSIVENESS */
+// RESPONSIVENESS
 function openNavigation() {
   if (navigation.className === "navigation") {
     navigation.className += " open";
@@ -214,7 +259,7 @@ function switchTo(site){
       break;
   }
 }
-
+*/
 
 
 
