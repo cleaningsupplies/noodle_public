@@ -1,32 +1,42 @@
 const navItems = document.querySelectorAll(".navigation");
 const navigation = document.querySelector("#navigation");
 const items = navigation.children;
-
 const logo = document.querySelector(".logo");
 const hamburger_menu = document.querySelector(".icon");
-const home_default = document.getElementsByClassName("active")[0];
+
 const indicators = document.querySelectorAll(".indicator");
 const homeContent = document.querySelector(".home .content");
 const site_home = document.querySelector(".home");
 const site_history = document.querySelector(".history");
 const site_today = document.querySelector(".today");
+
 const main_page = document.querySelector(".main_page");
 const menu_page = document.querySelector(".menu_page");
 const reservation_page = document.querySelector(".reservation_page");
-let site_active = "home";
-let lastScrollPosition = pageXOffset;
-let cameFromSwitch = false;
 
+let lastScrollPosition = pageXOffset;
+let manualScroll = false;
+
+// LISTENERS
 navItems.forEach(item => item.addEventListener("click", switchSite));
 logo.addEventListener("click", switchSite);
+document.addEventListener("scroll", scrollSubSite);
+indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
+hamburger_menu.addEventListener("click", openNavigation);
+window.addEventListener("resize", responsiveSize);
 
+// SITES
 function switchSite(event){
     let clicked = event.target;
-    console.log(clicked.innerHTML);
     removePrevious();
+    window.scroll(0,0);
+    //when in responsive view and nav item clicked then close navigation again
+    if(navigation.className =="navigation open"){
+      openNavigation();
+    }
     switch(clicked.innerHTML){
       case "home":
-        main_page.style.display = "";
+        switchToHome();
         break;
       case "menu":
         menu_page.style.display = "";
@@ -35,11 +45,17 @@ function switchSite(event){
         reservation_page.style.display = "";
         break;
       default:
-        main_page.style.display = "";
-        items[0].classList = "active";
+        switchToHome();
         break;
     }
     clicked.classList = "active";
+}
+
+function switchToHome(){
+  main_page.style.display = "";
+  removeActiveSubpage();
+  indicators[0].classList += " active";
+  items[0].classList = "active";
 }
 
 function removePrevious(){
@@ -57,59 +73,12 @@ function removePrevious(){
   } 
 }
 
-
-
-/*
-// --LISTENERS--
-hamburger_menu.addEventListener("click", openNavigation);
-navItems.forEach(item => item.addEventListener("click", switchActive));
-logo.addEventListener("click", backToHome);
-indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
-document.addEventListener("scroll", scrollSubSite);
-window.addEventListener("resize", responsiveSize);
-
-// --EXCEPTIONS--
-homeContent.addEventListener("click", ()=> {
-  window.scroll({
-    top: scro("history"),
-    left: 0,
-    behavior: 'smooth'
-  });
-});
-
-function backToHome(){
-  
-  //check if on other page than home
-  if(main_page.style.display == ""){
-    window.scrollTo(0,0);
-  }else if(menu_page.style.display == "" || reservation_page.style.display == ""){
-    removeActive();
-    removeActiveSubpage();
-    navigation.children[0].classList.add("active")
-    console.log(1);
-    switchTo("home");
-  }else{
-    removeActive();
-    removeActiveSubpage();
-    console.log(2);
-    cameFromSwitch = true;
-    window.scroll({
-      top: scro("home"),
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
-  indicators[0].className += " active";
-  
-  
-}
-
-// --INIDCATORS/SUBSITES--
+// INIDCATORS/SUBSITES
 function scrollSubSite(){
   //check if we are on main page
-  if(main_page.style.display != "none"){
+  if(items[0].classList.contains("active")){
     //check if scroll was initated manually
-    if (!cameFromSwitch) {
+    if (!manualScroll) {
       let value = "";
       let position = window.pageYOffset || document.documentElement.scrollTop;
       
@@ -139,12 +108,12 @@ function scrollSubSite(){
       lastScrollPosition = position <= 0 ? 0 : position; 
       
       window.scroll({
-        top: scro(value),
+        top: scrollToSubsite(value),
         left: 0,
         behavior: 'smooth'
       });
     }
-    setTimeout(()=>cameFromSwitch=false,200);
+    setTimeout(()=>manualScroll=false,200);
   }
 }
 
@@ -152,16 +121,15 @@ function switchSubSite(event){
     removeActiveSubpage();
     event.target.className += " active";
     let value = event.target.getAttribute("value");
-    cameFromSwitch = true;
+    manualScroll = true;
     window.scroll({
-      top: scro(value),
+      top: scrollToSubsite(value),
       left: 0,
       behavior: 'smooth'
     });
 }
 
-//scrollTo
-function scro(element){
+function scrollToSubsite(element){
   let value;
   switch(element){
     case "home": 
@@ -174,7 +142,7 @@ function scro(element){
       value = (site_home.offsetHeight*2); 
       break;
     default: 
-      scro("home"); 
+      scrollToSubsite("home"); 
       break;
   }
   return value;
@@ -222,45 +190,6 @@ function responsiveSize(){
     document.querySelector(".today .content .reimg").className = "img";
   }
 }
-
-// --SITES--
-function switchActive(event){
-  //when in responsive view and nav item clicked then close navigation again
-  if(navigation.className =="navigation open"){
-    openNavigation();
-  }
-  removeActiveSubpage();
-  removeActive();
-  indicators[0].classList += " active";
-  event.target.classList.add("active");
-  let value = event.target.getAttribute("value");
-  switchTo(value);
-}
-
-function removeActive(){
-  let active = document.getElementsByClassName("active");
-  active[0].classList.remove("active");
-  menu_page.style.display = "none";
-  main_page.style.display = "none";
-  reservation_page.style.display = "none";
-}
-
-function switchTo(site){
-  window.scrollTo(0,0);
-  switch(site){
-    case "home": 
-      main_page.style.display = "";
-      break;
-    case "menu": 
-      menu_page.style.display = "";
-      break;
-    case "reservation": 
-      reservation_page.style.display = "";
-      break;
-  }
-}
-*/
-
 
 
 
