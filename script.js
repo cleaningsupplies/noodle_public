@@ -24,6 +24,7 @@ document.addEventListener("scroll", scrollSubSite);
 indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
 hamburger_menu.addEventListener("click", openNavigation);
 window.addEventListener("resize", responsiveSize);
+homeContent.addEventListener("click", switchSubSite);
 
 // SITES
 function switchSite(event){
@@ -34,7 +35,7 @@ function switchSite(event){
     if(navigation.className =="navigation open"){
       openNavigation();
     }
-    switch(clicked.innerHTML){
+    switch(clicked.getAttribute("value")){
       case "home":
         switchToHome();
         break;
@@ -62,9 +63,9 @@ function removePrevious(){
   for(let i = 0; i < items.length; i++){
     if(items[i].classList.contains("active")){
       items[i].classList.remove("active");
-      if (items[i].innerHTML === "home"){
+      if (items[i].getAttribute("value") === "home"){
         main_page.style.display = "none";
-      }else if (items[i].innerHTML === "menu"){
+      }else if (items[i].getAttribute("value") === "menu"){
         menu_page.style.display = "none";
       }else{
         reservation_page.style.display = "none";
@@ -121,6 +122,11 @@ function switchSubSite(event){
     removeActiveSubpage();
     event.target.className += " active";
     let value = event.target.getAttribute("value");
+    //exception when clicking on text on main page
+    if(value == null){
+      value = "history";
+      indicators[1].className += " active";
+    }
     manualScroll = true;
     window.scroll({
       top: scrollToSubsite(value),
