@@ -1,4 +1,4 @@
-// Navigation
+//Navigation
 const navItems = document.querySelectorAll(".navigation");
 const navigation = document.querySelector("#navigation");
 const items = navigation.children;
@@ -8,7 +8,7 @@ navItems.forEach(item => item.addEventListener("click", switchSite));
 logo.addEventListener("click", switchSite);
 hamburger_menu.addEventListener("click", openNavigation);
 
-// Homepage
+//Homepage
 const indicators = document.querySelectorAll(".indicator");
 const homeContent = document.querySelector(".home .content");
 const site_home = document.querySelector(".home");
@@ -21,13 +21,13 @@ indicators.forEach(indicator => indicator.addEventListener("click", switchSubSit
 let lastScrollPosition = pageXOffset;
 let manualScroll = false;
 
-// Menu
+//Menu
 const menu_page = document.querySelector(".menu_page");
 
-// Reservation
+//Reservation
 const reservation_page = document.querySelector(".reservation_page");
 
-// General
+//General
 window.addEventListener("resize", responsiveSize);
 
 
