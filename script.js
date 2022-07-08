@@ -30,32 +30,44 @@ const reservation_page = document.querySelector(".reservation_page");
 // General
 window.addEventListener("resize", responsiveSize);
 
-// SITES
+
+// ** SWITCHING BETWEEN SITE-PAGES **
+
 function switchSite(event){
-    let clicked = event.target;
-    removePrevious();
+    //scroll back up on homepage
     window.scroll(0,0);
+
     //when in responsive view and nav item clicked then close navigation again
-    if(navigation.className =="navigation open"){
-      openNavigation();
-    }
+    if(navigation.className =="navigation open"){ openNavigation(); }
+
+    let clicked = event.target;
+    //remove previous attributes
+    removePrevious();
+    //switch to clicked page
     switch(clicked.getAttribute("value")){
-      case "home":
-        switchToHome();
-        break;
-      case "menu":
-        menu_page.style.display = "";
-        break;
-      case "reservation":
-        reservation_page.style.display = "";
-        break;
-      default:
-        switchToHome();
-        break;
+      case "home": switchToHome(); break;
+      case "menu": menu_page.style.display = ""; break;
+      case "reservation": reservation_page.style.display = ""; break;
+      default: switchToHome(); break;
     }
     clicked.classList = "active";
 }
 
+//remove previous attributes before switching to clicked page
+function removePrevious(){
+  for(let i = 0; i < items.length; i++){
+    if(items[i].classList.contains("active")){
+      items[i].classList.remove("active");
+      switch(items[i].getAttribute("value")){
+        case "home": main_page.style.display = "none"; break;
+        case "menu": menu_page.style.display = "none"; break;
+        case "reservation": reservation_page.style.display = "none"; break;
+      }
+    }
+  } 
+}
+
+//exception to switch back to hompage since there are many options one can come from
 function switchToHome(){
   main_page.style.display = "";
   removeActiveSubpage();
@@ -63,24 +75,10 @@ function switchToHome(){
   items[0].classList = "active";
 }
 
-function removePrevious(){
-  for(let i = 0; i < items.length; i++){
-    if(items[i].classList.contains("active")){
-      items[i].classList.remove("active");
-      if (items[i].getAttribute("value") === "home"){
-        main_page.style.display = "none";
-      }else if (items[i].getAttribute("value") === "menu"){
-        menu_page.style.display = "none";
-      }else{
-        reservation_page.style.display = "none";
-      }
-    }
-  } 
-}
+// ** SCROLLING SUBPAGES ON HOMEPAGE **
 
-// INIDCATORS/SUBSITES
 function scrollSubSite(){
-  //check if we are on main page
+  //check if we are on homepage
   if(items[0].classList.contains("active")){
     //check if scroll was initated manually
     if (!manualScroll) {
@@ -113,51 +111,46 @@ function scrollSubSite(){
       lastScrollPosition = position <= 0 ? 0 : position; 
       
       window.scroll({
-        top: scrollToSubsite(value),
+        top: getScrollValue(value),
         left: 0,
         behavior: 'smooth'
       });
     }
-    setTimeout(()=>manualScroll=false,200);
+    setTimeout(() => manualScroll=false,200);
   }
 }
 
+//when clicking on indicators switch to chosen subpage
 function switchSubSite(event){
     removeActiveSubpage();
     event.target.className += " active";
     let value = event.target.getAttribute("value");
-    //exception when clicking on text on main page
+    //exception when clicking on text on homepage/top-subpage
     if(value == null){
       value = "history";
       indicators[1].className += " active";
     }
     manualScroll = true;
     window.scroll({
-      top: scrollToSubsite(value),
+      top: getScrollValue(value),
       left: 0,
       behavior: 'smooth'
     });
 }
 
-function scrollToSubsite(element){
+//retrieving value to which window should be scrolled. Works responsive as well
+function getScrollValue(element){
   let value;
   switch(element){
-    case "home": 
-      value = 0;
-      break;
-    case "history": 
-      value = site_home.offsetHeight;
-      break;
-    case "today":
-      value = (site_home.offsetHeight*2); 
-      break;
-    default: 
-      scrollToSubsite("home"); 
-      break;
+    case "home": value = 0; break;
+    case "history": value = site_home.offsetHeight; break;
+    case "today": value = (site_home.offsetHeight*2); break;
+    default: getScrollValue("home"); break;
   }
   return value;
 }
 
+//remove previous attributes before scrolling to selected subpage
 function removeActiveSubpage(){
   indicators.forEach(indicator => {
     if(indicator.className.includes("active")){
@@ -166,7 +159,9 @@ function removeActiveSubpage(){
   });
 }
 
-// RESPONSIVENESS
+// ** RESPONSIVENESS **
+
+//open and close hamburger menu
 function openNavigation() {
   if (navigation.className === "navigation") {
     navigation.className += " open";
@@ -175,6 +170,7 @@ function openNavigation() {
   }
 }
 
+// right now handling responsiveness on homepage
 function responsiveSize(){
   if(window.innerWidth <= 884){
     //History
