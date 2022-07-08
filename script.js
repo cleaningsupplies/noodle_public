@@ -1,30 +1,34 @@
+// Navigation
 const navItems = document.querySelectorAll(".navigation");
 const navigation = document.querySelector("#navigation");
 const items = navigation.children;
 const logo = document.querySelector(".logo");
 const hamburger_menu = document.querySelector(".icon");
+navItems.forEach(item => item.addEventListener("click", switchSite));
+logo.addEventListener("click", switchSite);
+hamburger_menu.addEventListener("click", openNavigation);
 
+// Homepage
 const indicators = document.querySelectorAll(".indicator");
 const homeContent = document.querySelector(".home .content");
 const site_home = document.querySelector(".home");
 const site_history = document.querySelector(".history");
 const site_today = document.querySelector(".today");
-
 const main_page = document.querySelector(".main_page");
-const menu_page = document.querySelector(".menu_page");
-const reservation_page = document.querySelector(".reservation_page");
-
+document.addEventListener("scroll", scrollSubSite);
+homeContent.addEventListener("click", switchSubSite);
+indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
 let lastScrollPosition = pageXOffset;
 let manualScroll = false;
 
-// LISTENERS
-navItems.forEach(item => item.addEventListener("click", switchSite));
-logo.addEventListener("click", switchSite);
-document.addEventListener("scroll", scrollSubSite);
-indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
-hamburger_menu.addEventListener("click", openNavigation);
+// Menu
+const menu_page = document.querySelector(".menu_page");
+
+// Reservation
+const reservation_page = document.querySelector(".reservation_page");
+
+// General
 window.addEventListener("resize", responsiveSize);
-homeContent.addEventListener("click", switchSubSite);
 
 // SITES
 function switchSite(event){
