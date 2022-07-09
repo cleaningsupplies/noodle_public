@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700;6..96,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+:root{
+    --base_font_color: #262626;
+
+    --base_grey_primary: #262626;
+    --base_grey_secondary: #505050;
+
+    --base_beige_dark: #453d34;
+    --base_beige_primary: #9a866f;
+    --base_beige_secondary: #E6DCD2;
+
+    --base_green_primary: #63561D;
+    --base_green_secondary: #C3AC63;
+
+    --base_font_family: 'Bodoni Moda', serif;
+    --modern_font_family: 'Quicksand', sans-serif;
+}
+
+body, html{
+    position: relative;
+    background-color: var(--base_grey_primary);
+    margin: 0;
+    color: var(--base_grey_primary);
+    font-family: var(--base_font_family);  
+    z-index: -20;
+}
+
+/* header with navigation and logo */
+header{
+    padding: 20px;
+    height: 10%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2;
+}
+
+/* all text elements in header*/
+header a{
+    text-decoration: none;
+    color: var(--base_beige_primary);
+    font-size: 5vh;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+/* nav items */
+header a:hover{
+    color: var(--base_beige_secondary);
+}
