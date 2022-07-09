@@ -1,11 +1,12 @@
 /* page indicator left side */
 .page_indicator{
     margin: 0;
+    margin-left: 15px;
     position: fixed;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    width: 10%;
+    width: 5%;
 }
 
 .indicator {
@@ -27,6 +28,15 @@
 }
 
 /* HOME */
+.main_page{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100vw);
+    display: relative;
+    z-index: -2;
+}
+
 .home{
     background: url("/Users/stephanie/VSC/webdev/noodlee/images/noodle.jpg");
     background-position: center;

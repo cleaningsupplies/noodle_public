@@ -1,3 +1,30 @@
+/* header with navigation and logo */
+header{
+    padding: 20px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+/* all text elements in header*/
+header a{
+    text-decoration: none;
+    color: var(--base_beige_primary);
+    font-size: 5vh;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+/* nav items */
+header a:hover{
+    color: var(--base_beige_secondary);
+}
+
 .navigation a.active {
     color: var(--base_beige_secondary);
 }

@@ -2,51 +2,83 @@
 .menu{
      background-color: var(--base_grey_primary);
  
-     /* shadow queue: right, left, top 
-     box-shadow: inset 0 81vw 29vw -38vw rgba(11, 11, 11, 0.8);*/
-     height: 100%;
+     /* shadow queue: right, left, top */
+     box-shadow: inset -4vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
+                     inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
+                     inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+ 
+     height: calc(100vh);
      width: 100%;
      display: flex;
      justify-content: center;
      align-items: center;
- }
+}
  
  .menu .content{
      color: var(--base_beige_secondary);
      display: flex;
      align-items: center;
      justify-content: center;
-     flex-direction: column;
      width: 100%;
-     padding-top: 20vh;
-     padding-bottom: 10vh;
+     height: 100%;
+     margin-left: 5vh;
+     margin-right: 5vh;
  }
  
- .menu .content .text{
-     font-size: 5vh;
-     width: 70%;
-     text-align: center;
-     color: var(--base_beige_primary);
-     display: none;
- }
  
- .main_dishes{
-     width: 70%;
+ .dishes{
+     color: var(--base_grey_primary);
+     margin: 1vh;
+     border-radius: 10px;
+     width: 100%;
+     height: 60%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
      line-height: 6vh;
      text-align: left;
-     font-size: 4vh;
+     font-size: 3vh;
+     /* top, right, bottom, left 
+     padding: 10vh 2.5vh 10vh 2.5vh; */
  }
  
  .dish{
-     padding-top: 8vh;
-     padding-bottom: 1vh;
-     font-size: 5vh;
-     color:var(--base_beige_primary);
+     font-size: 3.2vh;
+     color:var(--base_grey_primary);
      font-family: var(--modern_font_family);
      font-style: normal;
      font-weight: 700;
      letter-spacing: 0.5vw;
  
+ }
+
+.rice{
+     background: url("/Users/stephanie/VSC/webdev/noodlee/images/rice.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
+ .ramen{
+     background: url("/Users/stephanie/VSC/webdev/noodlee/images/ramen.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
+ .udon{
+     background: url("/Users/stephanie/VSC/webdev/noodlee/images/udon.png");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
+ .side{
+     
+ }
+
+ .price{
+     
  }
  
  .scroll_nav{
@@ -73,7 +105,7 @@
          box-shadow: inset 0 58vw 15vw -29vw #0b0b0b;
      }
  
-     .main_dishes{
+     .dishes{
          width: 90%;
      }
  }
