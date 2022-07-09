@@ -1,4 +1,5 @@
 //Navigation
+// blub
 const navItems = document.querySelectorAll(".navigation");
 const navigation = document.querySelector("#navigation");
 const items = navigation.children;
