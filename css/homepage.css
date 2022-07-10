@@ -239,7 +239,7 @@
 }
 
 /* RESPONSIVE */
-@media only screen and (max-width: 884px) {
+@media only screen and (max-width: 1400px) {
     .home{
         /* shadow queue: right, left, top */
        box-shadow: inset -58vw 0 61vw -9vw rgba(0, 0, 0, 0.8), 

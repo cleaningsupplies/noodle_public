@@ -56,7 +56,7 @@ header a:hover{
 }
 
 /* RESPONSIVE */
-@media only screen and (max-width: 884px) {
+@media only screen and (max-width: 1400px) {
 
     .navigation a {
         display: none;
