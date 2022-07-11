@@ -163,10 +163,10 @@ function removeActiveSubpage(){
 
 //open and close hamburger menu
 function openNavigation() {
-  if (navigation.className === "navigation") {
-    navigation.className += " open";
+  if (navigation.className === "navigation close"||navigation.className === "navigation") {
+    navigation.className = "navigation open";
   } else {
-    navigation.className = "navigation";
+    navigation.className = "navigation close";
   }
 }
 
@@ -194,6 +194,8 @@ function responsiveSize(){
     document.querySelector(".today .recontent").className = "today content";
     document.querySelector(".today .content .retext").className = "text";
     document.querySelector(".today .content .reimg").className = "img";
+
+    navigation.className = "navigation";
   }
 }
 
