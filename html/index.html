@@ -3,20 +3,22 @@
 <html>
     <head>
         <title>noodlee</title>
-        <link rel="stylesheet" href="css/style.css">
-        <meta charset="utf-8"> 
+        <link rel="stylesheet" href="../css/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script defer src="node_modules/swup/dist/swup.min.js"></script>
     </head>
 
     <body>
         <header>
             <div class="logo">
-                <a href="#home"><img src="images/noodlee.png">noodlee</a>
+                <a href="../html/index.html"><img src="../images/noodlee.png">noodlee</a>
             </div>
 
             <nav class="navigation" id="navigation">
-                <a href="#home" value="home" class="active">home</a>
-                <a href="#menu" value="menu">menu</a>
-                <a href="#reservation" value="reservation">reservation</a>
+                <a href="../html/index.html" value="home" class="active">home</a>
+                <a href="../html/menu.html" value="menu">menu</a>
+                <a href="../html/reservation.html" value="reservation">reservation</a>
                 
             </nav>
 
@@ -25,7 +27,7 @@
             </a>
         </header>
 
-        <div class="main_page" >
+        <div class="main_page transition_fade" id="swup">
             <div class="page_indicator">
                 <span><a href="#home" class="indicator active" value="home"></a></span>
                 <span><a href="#history" class="indicator" value="history"></a></span>
@@ -64,6 +66,8 @@
                 </div>
             </div>
         </div>
+<!--
+    
 
         <div class="menu_page" style="display: none">
             <div class="menu">
@@ -164,9 +168,9 @@
         <div class="reservation_page" style="display: none">
             RESERVATION
         </div>
-        
+ -->       
     </body>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 
 </html>

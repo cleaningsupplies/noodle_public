@@ -4,8 +4,6 @@ const navigation = document.querySelector("#navigation");
 const items = navigation.children;
 const logo = document.querySelector(".logo");
 const hamburger_menu = document.querySelector(".icon");
-navItems.forEach(item => item.addEventListener("click", switchSite));
-logo.addEventListener("click", switchSite);
 hamburger_menu.addEventListener("click", openNavigation);
 
 //Homepage
@@ -28,52 +26,10 @@ const menu_page = document.querySelector(".menu_page");
 const reservation_page = document.querySelector(".reservation_page");
 
 //General
+const swup = new Swup()
 window.addEventListener("resize", responsiveSize);
 responsiveSize();
 
-// ** SWITCHING BETWEEN SITE-PAGES **
-
-function switchSite(event){
-    //scroll back up on homepage
-    window.scroll(0,0);
-
-    //when in responsive view and nav item clicked then close navigation again
-    if(navigation.className =="navigation open"){ openNavigation(); }
-
-    let clicked = event.target;
-    //remove previous attributes
-    removePrevious();
-    //switch to clicked page
-    switch(clicked.getAttribute("value")){
-      case "home": switchToHome(); break;
-      case "menu": menu_page.style.display = ""; break;
-      case "reservation": reservation_page.style.display = ""; break;
-      default: switchToHome(); break;
-    }
-    clicked.classList = "active";
-}
-
-//remove previous attributes before switching to clicked page
-function removePrevious(){
-  for(let i = 0; i < items.length; i++){
-    if(items[i].classList.contains("active")){
-      items[i].classList.remove("active");
-      switch(items[i].getAttribute("value")){
-        case "home": main_page.style.display = "none"; break;
-        case "menu": menu_page.style.display = "none"; break;
-        case "reservation": reservation_page.style.display = "none"; break;
-      }
-    }
-  } 
-}
-
-//exception to switch back to hompage since there are many options one can come from
-function switchToHome(){
-  main_page.style.display = "";
-  removeActiveSubpage();
-  indicators[0].classList += " active";
-  items[0].classList = "active";
-}
 
 // ** SCROLLING SUBPAGES ON HOMEPAGE **
 

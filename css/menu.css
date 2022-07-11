@@ -102,7 +102,7 @@
 }
 
 .rice,.ramen,.udon{
-    background: url("/Users/stephanie/VSC/webdev/noodlee/images/rice.png");
+    background: url("../images/rice.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -110,11 +110,11 @@
  }
 
 .ramen{
-    background: url("/Users/stephanie/VSC/webdev/noodlee/images/ramen.png");
+    background: url("../images/ramen.png");
 }
 
 .udon{
-    background: url("/Users/stephanie/VSC/webdev/noodlee/images/udon.png");
+    background: url("../images/udon.png");
 }
  
 .scroll_nav{
