@@ -127,7 +127,6 @@ header a:hover{
     }
 
     @keyframes slideout {
-
         0% {
             right: 0px;
           }

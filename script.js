@@ -29,7 +29,7 @@ const reservation_page = document.querySelector(".reservation_page");
 
 //General
 window.addEventListener("resize", responsiveSize);
-
+responsiveSize();
 
 // ** SWITCHING BETWEEN SITE-PAGES **
 
