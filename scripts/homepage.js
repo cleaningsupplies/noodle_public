@@ -1,12 +1,4 @@
-//Navigation
-const navItems = document.querySelectorAll(".navigation");
-const navigation = document.querySelector("#navigation");
-const items = navigation.children;
-const logo = document.querySelector(".logo");
-const hamburger_menu = document.querySelector(".icon");
-hamburger_menu.addEventListener("click", openNavigation);
-
-//Homepage
+const items = document.querySelector("#navigation").children;
 const indicators = document.querySelectorAll(".indicator");
 const homeContent = document.querySelector(".home .content");
 const site_home = document.querySelector(".home");
@@ -19,20 +11,11 @@ indicators.forEach(indicator => indicator.addEventListener("click", switchSubSit
 let lastScrollPosition = pageXOffset;
 let manualScroll = false;
 
-//Menu
-const menu_page = document.querySelector(".menu_page");
-
-//Reservation
-const reservation_page = document.querySelector(".reservation_page");
-
-//General
-const swup = new Swup()
 window.addEventListener("resize", responsiveSize);
 responsiveSize();
 
 
 // ** SCROLLING SUBPAGES ON HOMEPAGE **
-
 function scrollSubSite(){
   //check if we are on homepage
   if(items[0].classList.contains("active")){
@@ -116,16 +99,6 @@ function removeActiveSubpage(){
 }
 
 // ** RESPONSIVENESS **
-
-//open and close hamburger menu
-function openNavigation() {
-  if (navigation.className === "navigation close"||navigation.className === "navigation") {
-    navigation.className = "navigation open";
-  } else {
-    navigation.className = "navigation close";
-  }
-}
-
 // right now handling responsiveness on homepage
 function responsiveSize(){
   if(window.innerWidth <= 884){
