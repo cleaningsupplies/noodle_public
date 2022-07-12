@@ -5,8 +5,11 @@
         <link rel="stylesheet" href="../css/style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script defer src="../node_modules/swup/dist/swup.min.js"></script>
+        <script defer src="../scripts/swuppie.js"></script>
     </head>
     <body>
+
         <header>
             <div class="logo">
                 <a href="../html/index.html"><img src="../images/noodlee.png">noodlee</a>
@@ -23,77 +26,49 @@
                 &#x2630;
             </a>
         </header>
-        <div class="menu_page transition-fade" id="swup" >
-            <div class="menu">
-                <div class="content">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                          <div class="flip-card-front rice">
-                            The Classic<br>
-                            <span class="dish">RICE NOODLEES</span>
-                          </div>
-                          <div class="flip-card-back rice_bg">
-                            <span class="dish">RICE NOODLEES</span>
-                            <table class="dishes">
-                                <tr>
-                                    <td class="side">vegetables</td>
-                                    <td class="price">$8</td>
-                                </tr>
-                                <tr>
-                                    <td class="side">tofu & vegetables</td> 
-                                    <td class="price">$10</td>
-                                </tr>
-                                <tr>
-                                    <td class="side">chicken</td>
-                                    <td class="price">$12</td>
-                                </tr>
-                                <tr>
-                                    <td class="side">beef</td>
-                                    <td class="price">$13</td>
-                                </tr>
-                            </table>
-                          </div>
-                        </div>
-                    </div>
 
-                    <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front ramen">
-                        The Simple<br>
-                        <span class="dish">RAMEN NOODLEES</span>
-                        </div>
-                        <div class="flip-card-back ramen_bg">
-                        <span class="dish">RAMEN NOODLEES</span>
-                        <table class="dishes">
-                            <tr>
-                                <td class="side">vegetables</td>
-                                <td class="price">$8</td>
-                            </tr>
-                            <tr>
-                                <td class="side">tofu & vegetables</td> 
-                                <td class="price">$10</td>
-                            </tr>
-                            <tr>
-                                <td class="side">chicken</td>
-                                <td class="price">$12</td>
-                            </tr>
-                            <tr>
-                                <td class="side">beef</td>
-                                <td class="price">$13</td>
-                            </tr>
-                        </table>
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front udon">
-                            The Chunky<br>
-                            <span class="dish">UDON NOODLEES</span>
+        <main id="swup" class="transition-fade">
+            <div class="menu_page">
+                <div class="menu">
+                    <div class="content">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                              <div class="flip-card-front rice">
+                                The Classic<br>
+                                <span class="dish">RICE NOODLEES</span>
+                              </div>
+                              <div class="flip-card-back rice_bg">
+                                <span class="dish">RICE NOODLEES</span>
+                                <table class="dishes">
+                                    <tr>
+                                        <td class="side">vegetables</td>
+                                        <td class="price">$8</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="side">tofu & vegetables</td> 
+                                        <td class="price">$10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="side">chicken</td>
+                                        <td class="price">$12</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="side">beef</td>
+                                        <td class="price">$13</td>
+                                    </tr>
+                                </table>
+                              </div>
                             </div>
-                            <div class="flip-card-back udon_bg">
-                            <span class="dish">UDON NOODLEES</span>
+                        </div>
+    
+                        <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front ramen">
+                            The Simple<br>
+                            <span class="dish">RAMEN NOODLEES</span>
+                            </div>
+                            <div class="flip-card-back ramen_bg">
+                            <span class="dish">RAMEN NOODLEES</span>
                             <table class="dishes">
                                 <tr>
                                     <td class="side">vegetables</td>
@@ -112,12 +87,44 @@
                                     <td class="price">$13</td>
                                 </tr>
                             </table>
+                            </div>
                         </div>
-                    </div>
+                        </div>
+    
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front udon">
+                                The Chunky<br>
+                                <span class="dish">UDON NOODLEES</span>
+                                </div>
+                                <div class="flip-card-back udon_bg">
+                                <span class="dish">UDON NOODLEES</span>
+                                <table class="dishes">
+                                    <tr>
+                                        <td class="side">vegetables</td>
+                                        <td class="price">$8</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="side">tofu & vegetables</td> 
+                                        <td class="price">$10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="side">chicken</td>
+                                        <td class="price">$12</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="side">beef</td>
+                                        <td class="price">$13</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
+       
     </body>
     <script src="../scripts/navigation.js"></script>
 </html>

@@ -29,11 +29,7 @@ body, html{
 
 }
 
-body{
-    overflow-x: hidden;
-}
-
-
 html::-webkit-scrollbar {
     display: none; 
 }
+
