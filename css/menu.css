@@ -84,7 +84,7 @@
 }
 
 .flip-card-back{
-    background-color: #787777;
+    background-color: #8D8D8F;
     transform: rotateY(180deg);
     border-radius: 20px;
     display: flex;
@@ -94,11 +94,11 @@
 }
 
 .flip-card-back.ramen_bg{
-    background-color: #706A61;
+    background-color: #9E8F77;
 }  
 
 .flip-card-back.udon_bg{
-    background-color: #919190;
+    background-color: #ABAAA8;
 }
 
 .rice,.ramen,.udon{
@@ -111,10 +111,18 @@
 
 .ramen{
     background: url("../images/ramen.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
 }
 
 .udon{
     background: url("../images/udon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
 }
  
 .scroll_nav{
