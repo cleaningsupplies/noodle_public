@@ -18,7 +18,6 @@ function openNavigation() {
 function responsiveSize(){
      if(window.innerWidth <= 884){
      }else{
-   
        navigation.className = "navigation";
      }
    }
