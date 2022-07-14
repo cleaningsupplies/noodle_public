@@ -31,7 +31,7 @@ header a:hover{
       
 .icon {
     position: absolute;
-    right: 55px;
+    right: 48px;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
