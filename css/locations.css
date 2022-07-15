@@ -14,10 +14,11 @@
      flex-direction: column;
      justify-content: center;
      text-align: right;
-     font-size: 5vh;
+     font-size: 4vh;
      line-height: 15vh;
      padding-right: 2%;
      background-color: rgba(0, 0, 0, 0.3);
+     font-family: var(--modern_font_family);
 }
 
 .locations span:hover{
@@ -49,6 +50,7 @@
      width: 38%;
 }
 
+/*
 .cityA, .cityB, .cityC, .cityD{
-     font-family: var(--modern_font_family);
 }
+*/
