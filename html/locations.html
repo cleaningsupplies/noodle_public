@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+
     <script defer src="../scripts/locations.js"></script>
     <script defer src="../scripts/navigation.js"></script>
     <link href="../css/style.css" rel="stylesheet">
@@ -31,37 +35,39 @@
                <span id="cityC">TIANJIN</span>
                <span id="cityD">BROOKLYN</span>
           </div>
-          <div class="location_view">MAP</div>
+          <div class="location_view">
+            <div id="map"></div>
+          </div>
           <div class="location_description">
             <img id="logo" src="../images/brand.png">
             <div class="cityA">
                 31-20 SHIJIANYUAN RD, GUILIN<br>
                 GUANGXI, CHINA 541000<br><br>
-                We'd love to hear from you:<br>
+                <span class="mail">WE'D LOVE TO HEAR FROM YOU:</span><br>
                 <a class="mail" href= "mailto:guilin@noodlee.com">guilin@noodlee.com</a>
             </div>
             <div class="cityB" style="display: none;">
                 668 LAOSHAN RD, PUDONG<br>
                 SHANGHAI, CHINA 200122<br><br>
-                We'd love to hear from you:<br>
+                <span class="mail">WE'D LOVE TO HEAR FROM YOU:</span><br>
                 <a class="mail" href= "mailto:shanghai@noodlee.com">shanghai@noodlee.com</a>
             </div>
             <div class="cityC" style="display: none;">
                 108 CHIFENG AVE, NAKAI DISTRICT<br>
                 TIANJIN, CHINA 300391<br><br>
-                We'd love to hear from you:<br>
+                <span class="mail">WE'D LOVE TO HEAR FROM YOU:</span><br>
                 <a class="mail" href= "mailto:tianjin@noodlee.com">tianjin@noodlee.com</a>
             </div>
             <div class="cityD" style="display: none;">
                 152 SMITH ST<br>
                 BROOKLYN, NY 11201<br><br>
-                We'd love to hear from you:<br>
+                <span class="mail">WE'D LOVE TO HEAR FROM YOU:</span><br>
                 <a class="mail" href= "mailto:brooklyn@noodlee.com">brooklyn@noodlee.com</a>
             </div>
-            
         </div>
      </div>
 
     </div>
+
 </body>
 </html>

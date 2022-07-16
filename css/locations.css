@@ -5,6 +5,7 @@
      display: flex;
      align-items: center;
      justify-content: center;
+     box-shadow: inset 330px -1px 186px -11px rgba(0,0,0,0.5);
 }
 
 .locations{
@@ -17,7 +18,6 @@
      font-size: 4vh;
      line-height: 15vh;
      padding-right: 2%;
-     background-color: rgba(0, 0, 0, 0.3);
      font-family: var(--modern_font_family);
 }
 
@@ -44,11 +44,18 @@
 
 .mail{
      color: var(--base_beige_primary);
+     font-family: var(--modern_font_family);
 }
 
 #logo{
      width: 38%;
 }
+
+#map {
+     height: 400px;
+     width: 100%;
+     border-radius: 10px;
+   }
 
 /*
 .cityA, .cityB, .cityC, .cityD{

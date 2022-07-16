@@ -45,8 +45,8 @@
 
     /* shadow queue: right, left, top */
     box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
-                    inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
-                    inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
+                inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
+                inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
     transition: 1s;
 
     height: calc(100vh);
