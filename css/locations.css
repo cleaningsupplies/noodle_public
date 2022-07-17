@@ -1,3 +1,7 @@
+body{
+     overflow: hidden;
+}
+
 .locations_page .content{
      height: calc(100vh);
      width:100%;
@@ -5,21 +9,22 @@
      display: flex;
      align-items: center;
      justify-content: center;
-     box-shadow: inset 330px -1px 186px -11px rgba(0,0,0,0.5);
+     box-shadow: inset 530px -1px 366px -81px rgba(0,0,0,0.5);
+     padding-top: 2.5%;
 }
 
 .locations{
      height: 100%;
-     width: 20%;
+     width: 23%;
      display: flex;
      flex-direction: column;
      justify-content: center;
      text-align: right;
      font-size: 4vh;
      line-height: 15vh;
-     padding-right: 2%;
      font-family: var(--modern_font_family);
 }
+
 
 .locations span:hover{
      color: var(--base_beige_secondary);
@@ -34,12 +39,29 @@
      margin-left: 4%;
      margin-right: 4%;
      width: 40%;
-     background-color: rgb(187, 157, 216);
+     height: 60%;
+     border-radius: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+#map {
+     aspect-ratio: 1/1;
+     height: 100%; 
+     border-radius: 100%; 
+     position: relative; 
+     z-index: 500;
+}
+
+.openMaps{
+     text-decoration: none;
 }
 
 .location_description{
-     width: 40%;
+     width: 37%;
      font-size: 3.3vh;
+     padding-right: 2%;
 }
 
 .mail{
@@ -50,14 +72,3 @@
 #logo{
      width: 38%;
 }
-
-#map {
-     height: 400px;
-     width: 100%;
-     border-radius: 10px;
-   }
-
-/*
-.cityA, .cityB, .cityC, .cityD{
-}
-*/
