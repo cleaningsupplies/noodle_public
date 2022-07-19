@@ -1,3 +1,5 @@
+
+const c = console.log.bind(console);
 const items = document.querySelector("#navigation").children;
 const indicators = document.querySelectorAll(".indicator");
 const homeContent = document.querySelector(".home .content");
@@ -19,6 +21,7 @@ responsiveSize();
 function scrollSubSite(){
   //check if we are on homepage
   if(items[0].classList.contains("active")){
+    
     //check if scroll was initated manually
     if (!manualScroll) {
       let value = "";
@@ -101,7 +104,7 @@ function removeActiveSubpage(){
 // ** RESPONSIVENESS **
 // right now handling responsiveness on homepage
 function responsiveSize(){
-  if(window.innerWidth <= 884){
+  if(window.innerWidth <= 600){
     //History
     site_history.className = "rehistory";
     document.querySelector(".rehistory .content").className = "recontent";

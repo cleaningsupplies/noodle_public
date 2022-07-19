@@ -176,7 +176,7 @@
     font-size: 5vw;;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE <= 600 */
 .rehistory, .retoday {
     z-index: -1;
     height: calc(100vh);
@@ -202,7 +202,7 @@
 
 .rehistory .recontent .reimg{
     width: 80vw;
-    height: 50vw;
+    height: 35vw;
     background: url("../images/lee.jpg");
     background-position: top;
     background-repeat: no-repeat;
@@ -210,7 +210,6 @@
     border-radius: 20px;
     /* shadow queue: right, left, top */
     box-shadow: inset 12vw -25vw 37vw 0 rgba(12, 7, 5, 0.8);
-    margin-bottom: 74%;
 }
 
 .retoday .recontent .reimg{
@@ -223,15 +222,12 @@
     border-radius: 20px;
     /* shadow queue: right, left, top */
     box-shadow: inset 12vw -25vw 37vw 0 rgba(12, 7, 5, 0.8);
-    margin-bottom: 74%;
 }
 
 .rehistory .recontent .retext, .retoday .recontent .retext{
     width: 76vw;
     font-size: 3.7vw;
     text-align: justify;
-    position: absolute ;
-    margin-top: 44%;
 }
 
 .rehistory .l1, .retoday .l1{
@@ -246,4 +242,17 @@
                    inset 13vw 0 44vw 9vw rgba(0, 0, 0, 0.8), 
                    inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
     }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .home .content{
+        color: var(--base_beige_secondary);
+        font-size: 11vh;
+        line-height: 90%;
+        margin-right: 4%;
+        margin-bottom:10%;
+        cursor: pointer;
+    }
+    
 }

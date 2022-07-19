@@ -26,6 +26,7 @@ body, html{
     color: var(--base_grey_primary);
     font-family: var(--base_font_family);  
     z-index: -20;
+    scroll-behavior: smooth;
 
 }
 

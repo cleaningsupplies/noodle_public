@@ -92,6 +92,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    -webkit-box-shadow: inset 0px -72px 46px -42px rgba(0,0,0,0.6);
+    box-shadow: inset 0px -72px 46px -42px rgba(0,0,0,0.6);
 }
 
 .flip-card-back.ramen_bg{
@@ -108,6 +110,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px;
+    -webkit-box-shadow: inset 0px -72px 46px -42px rgba(0,0,0,0.6);
+    box-shadow: inset 0px -72px 46px -42px rgba(0,0,0,0.6);
  }
 
 .ramen{
@@ -134,7 +138,7 @@
     position: fixed;
     color: #1b1b1b;
     /* shadow queue: right, left, top */
-   box-shadow: inset 0 68vw 16vw -68vw #1b1b1b;
+    box-shadow: inset 0 68vw 16vw -68vw #1b1b1b;
 }
 
  /* RESPONSIVE */
