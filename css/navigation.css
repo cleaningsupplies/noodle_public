@@ -1,4 +1,9 @@
 /* header with navigation and logo */
+.stop_scrolling{
+    height: 100%;
+    overflow: hidden;
+}
+
 header{
     padding: 20px;
     height: 10%;

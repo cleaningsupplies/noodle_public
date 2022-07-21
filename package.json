@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "scroll-js": "^3.5.2",
     "swup": "^2.0.16"
   }
 }

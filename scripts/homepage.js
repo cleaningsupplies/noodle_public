@@ -1,4 +1,3 @@
-
 const c = console.log.bind(console);
 const items = document.querySelector("#navigation").children;
 const indicators = document.querySelectorAll(".indicator");
@@ -7,17 +6,106 @@ const site_home = document.querySelector(".home");
 const site_history = document.querySelector(".history");
 const site_today = document.querySelector(".today");
 const main_page = document.querySelector(".main_page");
+
 document.addEventListener("scroll", scrollSubSite);
 homeContent.addEventListener("click", switchSubSite);
 indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
-let lastScrollPosition = pageXOffset;
+let lastScrollPosition = pageYOffset;
 let manualScroll = false;
 
 window.addEventListener("resize", responsiveSize);
 responsiveSize();
 
+/*
+document.addEventListener("scroll", chromeScroll);
+
+let count = 0; 
+
+function chromeScroll(event) {
+  document.removeEventListener('scroll', chromeScroll);
+
+  setTimeout(()=>homeContent.dispatchEvent(new Event("click")), 900);
+  setTimeout(() => document.addEventListener('scroll', chromeScroll),500);
+
+  //https://www.youtube.com/watch?v=htw4iKMYzEc
+
+  //scroll(0,821);
+/*
+  while(count != 821){
+    count++;
+    scroll(0, count);
+    c(pageYOffset)
+  }
+  //document.addEventListener('scroll', chromeScroll);
+  setTimeout(() => {
+    if(count != pageYOffset){
+      count = 821-count;
+      while(count != 821){
+        count++;
+        scroll(0,count);
+      }
+      c(pageYOffset)
+    }
+  }, 400); */
+    
+    //setTimeout(() => document.addEventListener('scroll', chromeScroll),1000);
+//}
+
+
 
 // ** SCROLLING SUBPAGES ON HOMEPAGE **
+function scrollSubSite(){
+  //check if we are on homepage
+  if(items[0].classList.contains("active")){
+    //check if scroll was initated manually
+    c(manualScroll)
+    if (!manualScroll) {
+      let value = "";
+      let position = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (position > lastScrollPosition){
+        //scroll down
+        if(window.scrollY >= site_home.offsetHeight+10){
+          removeActiveSubpage();
+          indicators[2].classList += " active";
+          value = "today";  
+        }else if (window.scrollY >= 10){
+          removeActiveSubpage();
+          indicators[1].classList += " active";
+          value = "history";  
+        }
+      } else {
+        //scroll up
+        if(window.scrollY <= site_home.offsetHeight-10){
+          removeActiveSubpage();
+          indicators[0].classList += " active";
+          value = "home";  
+        }else if (window.scrollY >= site_history.offsetHeight-10){
+          removeActiveSubpage();
+          indicators[1].classList += " active";
+          value = "history";  
+        }
+      }
+      lastScrollPosition = position <= 0 ? 0 : position; 
+     
+   
+      window.scroll({
+        top: getScrollValue(value), 
+        left: 0,
+        behavior: 'smooth'
+      });
+      c(getScrollValue(value), site_home.offsetHeight);
+    }
+
+    setTimeout(() => manualScroll=false,200);
+    
+  }
+}
+
+
+
+// ** SCROLLING SUBPAGES ON HOMEPAGE **
+
 function scrollSubSite(){
   //check if we are on homepage
   if(items[0].classList.contains("active")){
@@ -61,6 +149,7 @@ function scrollSubSite(){
     setTimeout(() => manualScroll=false,200);
   }
 }
+
 
 //when clicking on indicators switch to chosen subpage
 function switchSubSite(event){
