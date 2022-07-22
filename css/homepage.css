@@ -35,21 +35,40 @@
     width: calc(100vw);
     display: relative;
     z-index: -2;
+    height: calc(100vh);
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .main_page {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: calc(100vw);
+        display: relative;
+        z-index: -2;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100vh;
+    }
+
+    section{
+        height: 100vh;
+        scroll-snap-align: start;
+    }
+}
+
 
 .home{
     background: url("../images/noodle.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
+    height: 100vh;
     /* shadow queue: right, left, top */
     box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
                 inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
                 inset 0 9vw 16vw -6vw rgba(0, 0, 0, 0.8);
-    transition: 1s;
 
-    height: calc(100vh);
     width: 100%;
     left: 0px;
     top: 0px;
@@ -81,12 +100,12 @@
 /* HISTORY */
 .history{
     z-index: -1;
-    height: calc(100vh);
     width: 100%;
     color: var(--base_beige_secondary);
     background-color: var(--base_grey_primary);
     justify-content: center;
     align-items: center;
+    height: 100vh;
     /* shadow queue: right, left, top */
     box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
                 inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
@@ -129,12 +148,12 @@
 /* TODAY */
 .today{
     z-index: -1;
-    height: calc(100vh);
     width: 100%;
     color: var(--base_beige_secondary);
     background-color: var(--base_grey_primary);
     justify-content: center;
     align-items: center;
+    height: 100vh;
     /* shadow queue: right, left, top */
     box-shadow: inset -41vw 0 31vw -9vw rgba(0, 0, 0, 0.8), 
                 inset 4vw 0 11vw -5vw rgba(0, 0, 0, 0.8), 
@@ -256,3 +275,4 @@
     }
     
 }
+

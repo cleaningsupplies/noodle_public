@@ -16,99 +16,19 @@ let manualScroll = false;
 window.addEventListener("resize", responsiveSize);
 responsiveSize();
 
-/*
-document.addEventListener("scroll", chromeScroll);
-
-let count = 0; 
-
-function chromeScroll(event) {
-  document.removeEventListener('scroll', chromeScroll);
-
-  setTimeout(()=>homeContent.dispatchEvent(new Event("click")), 900);
-  setTimeout(() => document.addEventListener('scroll', chromeScroll),500);
-
-  //https://www.youtube.com/watch?v=htw4iKMYzEc
-
-  //scroll(0,821);
-/*
-  while(count != 821){
-    count++;
-    scroll(0, count);
-    c(pageYOffset)
-  }
-  //document.addEventListener('scroll', chromeScroll);
-  setTimeout(() => {
-    if(count != pageYOffset){
-      count = 821-count;
-      while(count != 821){
-        count++;
-        scroll(0,count);
-      }
-      c(pageYOffset)
-    }
-  }, 400); */
-    
-    //setTimeout(() => document.addEventListener('scroll', chromeScroll),1000);
-//}
-
-
-
-// ** SCROLLING SUBPAGES ON HOMEPAGE **
-function scrollSubSite(){
-  //check if we are on homepage
-  if(items[0].classList.contains("active")){
-    //check if scroll was initated manually
-    c(manualScroll)
-    if (!manualScroll) {
-      let value = "";
-      let position = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (position > lastScrollPosition){
-        //scroll down
-        if(window.scrollY >= site_home.offsetHeight+10){
-          removeActiveSubpage();
-          indicators[2].classList += " active";
-          value = "today";  
-        }else if (window.scrollY >= 10){
-          removeActiveSubpage();
-          indicators[1].classList += " active";
-          value = "history";  
-        }
-      } else {
-        //scroll up
-        if(window.scrollY <= site_home.offsetHeight-10){
-          removeActiveSubpage();
-          indicators[0].classList += " active";
-          value = "home";  
-        }else if (window.scrollY >= site_history.offsetHeight-10){
-          removeActiveSubpage();
-          indicators[1].classList += " active";
-          value = "history";  
-        }
-      }
-      lastScrollPosition = position <= 0 ? 0 : position; 
-     
-   
-      window.scroll({
-        top: getScrollValue(value), 
-        left: 0,
-        behavior: 'smooth'
-      });
-      c(getScrollValue(value), site_home.offsetHeight);
-    }
-
-    setTimeout(() => manualScroll=false,200);
-    
-  }
-}
-
 
 
 // ** SCROLLING SUBPAGES ON HOMEPAGE **
 
 function scrollSubSite(){
+  
+
   //check if we are on homepage
   if(items[0].classList.contains("active")){
+
+    //TODO
+    //https://stackoverflow.com/questions/61761439/how-can-i-get-css-scroll-snap-to-work-with-js-scroll-event-listener
+    //https://stackoverflow.com/questions/72703101/how-to-enable-scroll-snap-with-mouse-wheel-event-listener
     
     //check if scroll was initated manually
     if (!manualScroll) {
@@ -153,6 +73,7 @@ function scrollSubSite(){
 
 //when clicking on indicators switch to chosen subpage
 function switchSubSite(event){
+  c(detectBrowser())
     removeActiveSubpage();
     event.target.className += " active";
     let value = event.target.getAttribute("value");
@@ -219,6 +140,22 @@ function responsiveSize(){
     navigation.className = "navigation";
   }
 }
+
+function detectBrowser() { 
+  if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) {
+      return 'Opera';
+  } else if(navigator.userAgent.indexOf("Chrome") != -1 ) {
+      return 'Chrome';
+  } else if(navigator.userAgent.indexOf("Safari") != -1) {
+      return 'Safari';
+  } else if(navigator.userAgent.indexOf("Firefox") != -1 ){
+      return 'Firefox';
+  } else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+      return 'IE';//crap
+  } else {
+      return 'Unknown';
+  }
+} 
 
 
 

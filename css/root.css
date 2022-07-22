@@ -18,7 +18,6 @@
     --modern_font_family: 'Quicksand', sans-serif;
 }
 
-
 body, html{
     position: relative;
     background-color: var(--base_grey_primary);
@@ -30,7 +29,7 @@ body, html{
 
 }
 
-html::-webkit-scrollbar {
+*::-webkit-scrollbar {
     display: none; 
 }
 
