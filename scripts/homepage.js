@@ -9,7 +9,7 @@ const main_page = document.querySelector(".main_page");
 
 //safari
 document.addEventListener("scroll", scrollSubSite);
-//chrome, edge & firefox
+//chrome, edge, firefox, others
 main_page.addEventListener("scroll", scrollSubSiteCE);
 
 homeContent.addEventListener("click", switchSubSite);
@@ -20,11 +20,9 @@ let manualScroll = false;
 window.addEventListener("resize", responsiveSize);
 responsiveSize();
 
-let activeSubsite = "home";
-
 // ** SCROLLING SUBPAGES ON HOMEPAGE **
 
-//chrome & edge
+//chrome, firefox, edge
 function scrollSubSiteCE(e){
   
   let atSnappingPoint = e.target.scrollTop % e.target.offsetHeight === 0;
@@ -34,9 +32,9 @@ function scrollSubSiteCE(e){
 
   clearTimeout(e.target.scrollTimeout); //clear previous timeout
 
+  //handling indicators & checking if view snapped to check where to change the indicators
   e.target.scrollTimeout = setTimeout(function() {
     if(items[0].classList.contains("active")){
-      
       if(position < main_page.offsetHeight){
         removeActiveSubpage();
         indicators[0].classList += " active";
@@ -50,6 +48,7 @@ function scrollSubSiteCE(e){
     }
   }, timeOut);
 
+  //firefox is handles seperately since css scroll snap wont work here properly
   if(detectBrowser() === "Firefox"){
     if (position > lastScrollPosition){
       //scroll down
@@ -84,7 +83,7 @@ function scrollSubSite(){
     if (!manualScroll) {
       let value = "";
       let position = window.pageYOffset || document.documentElement.scrollTop;
-      
+      //making scroll smoothly 
       if (position > lastScrollPosition){
         //scroll down
         if(window.scrollY >= site_home.offsetHeight+10){
@@ -131,13 +130,15 @@ function switchSubSite(event){
       indicators[1].className += " active";
     }
     manualScroll = true;
+
+    //handling crossplattform since using css scroll snap
     if(detectBrowser() === "Safari"){
       window.scroll({
         top: getScrollValue(value),
         left: 0,
         behavior: 'smooth'
       });
-    }else if(detectBrowser() === "Chrome"||detectBrowser() === "Firefox" ||detectBrowser() === "Opera"){
+    }else{
       main_page.scroll({
         top: getScrollValue(value),
         left: 0,
@@ -168,7 +169,6 @@ function removeActiveSubpage(){
 }
 
 // ** RESPONSIVENESS **
-// right now handling responsiveness on homepage
 function responsiveSize(){
   if(window.innerWidth <= 600){
     //History
@@ -197,6 +197,7 @@ function responsiveSize(){
   }
 }
 
+// ** HELPERS **
 function detectBrowser() { 
   if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) {
       return 'Opera';

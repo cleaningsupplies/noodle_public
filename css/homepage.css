@@ -38,25 +38,6 @@
     height: calc(100vh);
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-    .main_page {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: calc(100vw);
-        display: relative;
-        z-index: -2;
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-        height: 100vh;
-    }
-
-    section{
-        height: 100vh;
-        scroll-snap-align: start;
-    }
-}
-
 .home{
     background: url("../images/noodle.jpg");
     background-position: center;
@@ -274,4 +255,25 @@
     }
     
 }
+
+/* CHROME and others */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+    .main_page {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: calc(100vw);
+        display: relative;
+        z-index: -2;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100vh;
+    }
+
+    section{
+        height: 100vh;
+        scroll-snap-align: start;
+    }
+}
+
 
