@@ -7,7 +7,11 @@ const site_history = document.querySelector(".history");
 const site_today = document.querySelector(".today");
 const main_page = document.querySelector(".main_page");
 
+//safari & firefox
 document.addEventListener("scroll", scrollSubSite);
+//chrome & edge
+main_page.addEventListener("scroll", scrollSubSiteCE);
+
 homeContent.addEventListener("click", switchSubSite);
 indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
 let lastScrollPosition = pageYOffset;
@@ -16,20 +20,39 @@ let manualScroll = false;
 window.addEventListener("resize", responsiveSize);
 responsiveSize();
 
-
+let activeSubsite = "home";
 
 // ** SCROLLING SUBPAGES ON HOMEPAGE **
 
-function scrollSubSite(){
-  
+//chrome & edge
+function scrollSubSiteCE(e){
 
+  let atSnappingPoint = e.target.scrollTop % e.target.offsetHeight === 0;
+  let timeOut = atSnappingPoint ? 0 : 800; 
+
+    clearTimeout(e.target.scrollTimeout); //clear previous timeout
+
+    e.target.scrollTimeout = setTimeout(function() {
+      if(items[0].classList.contains("active")){
+        let position = main_page.scrollTop;
+        if(position < 821){
+          removeActiveSubpage();
+          indicators[0].classList += " active";
+        }else if (position >= 821 && position < 1642){
+          removeActiveSubpage();
+          indicators[1].classList += " active";
+        }else{
+          removeActiveSubpage();
+          indicators[2].classList += " active";
+        }
+      }
+    }, timeOut);
+}
+
+//safari & firefox
+function scrollSubSite(){
   //check if we are on homepage
   if(items[0].classList.contains("active")){
-
-    //TODO
-    //https://stackoverflow.com/questions/61761439/how-can-i-get-css-scroll-snap-to-work-with-js-scroll-event-listener
-    //https://stackoverflow.com/questions/72703101/how-to-enable-scroll-snap-with-mouse-wheel-event-listener
-    
     //check if scroll was initated manually
     if (!manualScroll) {
       let value = "";

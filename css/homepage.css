@@ -38,6 +38,7 @@
     height: calc(100vh);
 }
 
+
 @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
     .main_page {
         position: absolute;
