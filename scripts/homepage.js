@@ -9,7 +9,7 @@ const main_page = document.querySelector(".main_page");
 
 //safari & firefox
 document.addEventListener("scroll", scrollSubSite);
-//chrome & edge
+//chrome, edge & firefox
 main_page.addEventListener("scroll", scrollSubSiteCE);
 
 homeContent.addEventListener("click", switchSubSite);
@@ -28,17 +28,18 @@ let activeSubsite = "home";
 function scrollSubSiteCE(e){
 
   let atSnappingPoint = e.target.scrollTop % e.target.offsetHeight === 0;
-  let timeOut = atSnappingPoint ? 0 : 800; 
+  let timeOut = atSnappingPoint ? 0 : 100; 
 
     clearTimeout(e.target.scrollTimeout); //clear previous timeout
 
     e.target.scrollTimeout = setTimeout(function() {
       if(items[0].classList.contains("active")){
         let position = main_page.scrollTop;
-        if(position < 821){
+
+        if(position < main_page.offsetHeight){
           removeActiveSubpage();
           indicators[0].classList += " active";
-        }else if (position >= 821 && position < 1642){
+        }else if (position >= main_page.offsetHeight && position < (main_page.offsetHeight*2)){
           removeActiveSubpage();
           indicators[1].classList += " active";
         }else{
@@ -51,6 +52,7 @@ function scrollSubSiteCE(e){
 
 //safari & firefox
 function scrollSubSite(){
+  c("here")
   //check if we are on homepage
   if(items[0].classList.contains("active")){
     //check if scroll was initated manually
@@ -93,10 +95,8 @@ function scrollSubSite(){
   }
 }
 
-
 //when clicking on indicators switch to chosen subpage
 function switchSubSite(event){
-  c(detectBrowser())
     removeActiveSubpage();
     event.target.className += " active";
     let value = event.target.getAttribute("value");
@@ -106,11 +106,19 @@ function switchSubSite(event){
       indicators[1].className += " active";
     }
     manualScroll = true;
-    window.scroll({
-      top: getScrollValue(value),
-      left: 0,
-      behavior: 'smooth'
-    });
+    if(detectBrowser() === "Safari"){
+      window.scroll({
+        top: getScrollValue(value),
+        left: 0,
+        behavior: 'smooth'
+      });
+    }else if(detectBrowser() === "Chrome"||detectBrowser() === "Firefox" ||detectBrowser() === "Opera"){
+      main_page.scroll({
+        top: getScrollValue(value),
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
 }
 
 //retrieving value to which window should be scrolled. Works responsive as well
@@ -174,7 +182,7 @@ function detectBrowser() {
   } else if(navigator.userAgent.indexOf("Firefox") != -1 ){
       return 'Firefox';
   } else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
-      return 'IE';//crap
+      return 'IE';
   } else {
       return 'Unknown';
   }
