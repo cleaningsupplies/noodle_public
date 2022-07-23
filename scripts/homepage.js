@@ -7,7 +7,7 @@ const site_history = document.querySelector(".history");
 const site_today = document.querySelector(".today");
 const main_page = document.querySelector(".main_page");
 
-//safari & firefox
+//safari
 document.addEventListener("scroll", scrollSubSite);
 //chrome, edge & firefox
 main_page.addEventListener("scroll", scrollSubSiteCE);
@@ -26,28 +26,53 @@ let activeSubsite = "home";
 
 //chrome & edge
 function scrollSubSiteCE(e){
-
+  
   let atSnappingPoint = e.target.scrollTop % e.target.offsetHeight === 0;
   let timeOut = atSnappingPoint ? 0 : 100; 
+  let value = "";
+  let position = main_page.scrollTop;
 
-    clearTimeout(e.target.scrollTimeout); //clear previous timeout
+  clearTimeout(e.target.scrollTimeout); //clear previous timeout
 
-    e.target.scrollTimeout = setTimeout(function() {
-      if(items[0].classList.contains("active")){
-        let position = main_page.scrollTop;
-
-        if(position < main_page.offsetHeight){
-          removeActiveSubpage();
-          indicators[0].classList += " active";
-        }else if (position >= main_page.offsetHeight && position < (main_page.offsetHeight*2)){
-          removeActiveSubpage();
-          indicators[1].classList += " active";
-        }else{
-          removeActiveSubpage();
-          indicators[2].classList += " active";
-        }
+  e.target.scrollTimeout = setTimeout(function() {
+    if(items[0].classList.contains("active")){
+      
+      if(position < main_page.offsetHeight){
+        removeActiveSubpage();
+        indicators[0].classList += " active";
+      }else if (position >= main_page.offsetHeight && position < (main_page.offsetHeight*2)){
+        removeActiveSubpage();
+        indicators[1].classList += " active";
+      }else{
+        removeActiveSubpage();
+        indicators[2].classList += " active";
       }
-    }, timeOut);
+    }
+  }, timeOut);
+
+  if(detectBrowser() === "Firefox"){
+    if (position > lastScrollPosition){
+      //scroll down
+      if(position >= site_home.offsetHeight+10){
+        value = "today";
+      }else if (position >= 10){
+        value = "history";  
+      }
+    } else {
+      if(position <= site_home.offsetHeight-10){
+        value = "home";  
+      }else if (position <= (site_home.offsetHeight*2)-10){
+        value = "history";  
+      }
+    }
+    lastScrollPosition = position <= 0 ? 0 : position; 
+
+    main_page.scroll({
+      top: getScrollValue(value),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 }
 
 //safari & firefox
@@ -77,7 +102,7 @@ function scrollSubSite(){
           removeActiveSubpage();
           indicators[0].classList += " active";
           value = "home";  
-        }else if (window.scrollY >= site_history.offsetHeight-10){
+        }else if (window.scrollY <= (site_home.offsetHeight*2)-10){
           removeActiveSubpage();
           indicators[1].classList += " active";
           value = "history";  
