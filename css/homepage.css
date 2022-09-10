@@ -249,9 +249,19 @@
         color: var(--base_beige_secondary);
         font-size: 11vh;
         line-height: 90%;
-        margin-right: 4%;
+        margin-left: 4%;
         margin-bottom:10%;
         cursor: pointer;
+    }
+
+    .page_indicator{
+        margin: 0;
+        margin-left: 0.1px;
+        position: fixed;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 5%;
     }
     
 }

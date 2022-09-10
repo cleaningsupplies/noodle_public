@@ -48,7 +48,7 @@ function scrollSubSiteCE(e){
     }
   }, timeOut);
 
-  //firefox is handles seperately since css scroll snap wont work here properly
+  //firefox is handled seperately since css scroll snap wont work here properly
   if(detectBrowser() === "Firefox"){
     if (position > lastScrollPosition){
       //scroll down
@@ -74,49 +74,82 @@ function scrollSubSiteCE(e){
   }
 }
 
-//safari & firefox
-function scrollSubSite(){
-  c("here")
-  //check if we are on homepage
-  if(items[0].classList.contains("active")){
-    //check if scroll was initated manually
-    if (!manualScroll) {
-      let value = "";
-      let position = window.pageYOffset || document.documentElement.scrollTop;
-      //making scroll smoothly 
-      if (position > lastScrollPosition){
-        //scroll down
-        if(window.scrollY >= site_home.offsetHeight+10){
-          removeActiveSubpage();
-          indicators[2].classList += " active";
-          value = "today";  
-        }else if (window.scrollY >= 10){
-          removeActiveSubpage();
-          indicators[1].classList += " active";
-          value = "history";  
-        }
-      } else {
-        //scroll up
-        if(window.scrollY <= site_home.offsetHeight-10){
-          removeActiveSubpage();
-          indicators[0].classList += " active";
-          value = "home";  
-        }else if (window.scrollY <= (site_home.offsetHeight*2)-10){
-          removeActiveSubpage();
-          indicators[1].classList += " active";
-          value = "history";  
-        }
+function handlePhone(){
+    let position = window.pageYOffset || document.documentElement.scrollTop;
+    //making scroll smoothly 
+    if (position > lastScrollPosition){
+      //scroll down
+      if(window.scrollY >= site_home.offsetHeight+10){
+        removeActiveSubpage();
+        indicators[2].classList += " active";
+        value = "today";  
+      }else if (window.scrollY >= 10){
+        removeActiveSubpage();
+        indicators[1].classList += " active";
+        value = "history";  
       }
-      lastScrollPosition = position <= 0 ? 0 : position; 
-      
-      window.scroll({
-        top: getScrollValue(value),
-        left: 0,
-        behavior: 'smooth'
-      });
+    } else {
+      //scroll up
+      if(window.scrollY <= site_home.offsetHeight-10){
+        removeActiveSubpage();
+        indicators[0].classList += " active";
+        value = "home";  
+      }else if (window.scrollY <= (site_home.offsetHeight*2)-10){
+        removeActiveSubpage();
+        indicators[1].classList += " active";
+        value = "history";  
+      }
     }
-    setTimeout(() => manualScroll=false,200);
+    lastScrollPosition = position <= 0 ? 0 : position; 
+}
+
+//safari & firefox
+function scrollSubSite(e){
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    handlePhone();
+  }else{
+    //check if we are on homepage
+    if(items[0].classList.contains("active")){
+      //check if scroll was initated manually
+      if (!manualScroll) {
+        let value = "";
+        let position = window.pageYOffset || document.documentElement.scrollTop;
+        //making scroll smoothly 
+        if (position > lastScrollPosition){
+          //scroll down
+          if(window.scrollY >= site_home.offsetHeight+10){
+            removeActiveSubpage();
+            indicators[2].classList += " active";
+            value = "today";  
+          }else if (window.scrollY >= 10){
+            removeActiveSubpage();
+            indicators[1].classList += " active";
+            value = "history";  
+          }
+        } else {
+          //scroll up
+          if(window.scrollY <= site_home.offsetHeight-10){
+            removeActiveSubpage();
+            indicators[0].classList += " active";
+            value = "home";  
+          }else if (window.scrollY <= (site_home.offsetHeight*2)-10){
+            removeActiveSubpage();
+            indicators[1].classList += " active";
+            value = "history";  
+          }
+        }
+        lastScrollPosition = position <= 0 ? 0 : position; 
+        
+        window.scroll({
+          top: getScrollValue(value),
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
+      setTimeout(() => manualScroll=false,200);
+    }
   }
+  
 }
 
 //when clicking on indicators switch to chosen subpage
