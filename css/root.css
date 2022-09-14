@@ -4,6 +4,7 @@
 :root{
     --base_font_color: #262626;
 
+    --base_bg: #262626;
     --base_grey_primary: #262626;
     --base_grey_secondary: #505050;
 
@@ -20,7 +21,7 @@
 
 body, html{
     position: relative;
-    background-color: var(--base_grey_primary);
+    background-color: var(--base_bg);
     margin: 0;
     color: var(--base_grey_primary);
     font-family: var(--base_font_family);  
