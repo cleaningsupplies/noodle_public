@@ -82,24 +82,31 @@ function removeActive(){
 function addMap(lat, lon, url, topRow, secondRow){
      //check if map is alreay initialized and if so remove values
 
-          var container = L.DomUtil.get('map');
+          var container = L.DomUtil.get("map");
+          var container_responsive = L.DomUtil.get("map_responsive");
 
-
-          if(container != null){
+          if(container != null || container_responsive != null){
                container._leaflet_id = null;
+               container_responsive._leaflet_id = null;
           }
      
-          let map = L.map('map').setView([lat, lon], 15);
+          let map = L.map("map").setView([lat, lon], 15);
+          let map_responsive = L.map("map_responsive").setView([lat, lon], 15);
 
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                maxZoom: 18,
                attribution: '© OpenStreetMap'
-          }).addTo(map);          
+          }).addTo(map);     
+          
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               maxZoom: 18,
+               attribution: '© OpenStreetMap'
+          }).addTo(map_responsive);  
 
           let marker = L.marker([lat, lon]).addTo(map);
           marker.bindPopup(`<a target="_blank" rel="noopener noreferrer" class="openMaps" href="${url}"><b>noodlee @</b><br>${topRow}<br>${secondRow}</a>`).openPopup();
 
+          let marker_responsive = L.marker([lat, lon]).addTo(map_responsive);
+          marker_responsive.bindPopup(`<a target="_blank" rel="noopener noreferrer" class="openMaps" href="${url}"><b>noodlee @</b><br>${topRow}<br>${secondRow}</a>`).openPopup();
           
-     
-
 }

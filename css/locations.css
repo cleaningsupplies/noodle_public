@@ -78,7 +78,17 @@ body{
 }
 
 .location_view_responsive{
-     display: none;
+     /*display: none;*/
+     width: 70%;
+     height: 70%;
+}
+
+#map_responsive{
+     aspect-ratio: 1/1;
+     height: 100%; 
+     border-radius: 20px; 
+     position: relative; 
+     z-index: 500;
 }
 
 /* RESPONSIVE */
@@ -86,13 +96,13 @@ body{
 
      .location_view_responsive{
           margin-left: 4%;
-     margin-right: 4%;
-     width: 40%;
-     height: 60%;
-     border-radius: 10px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
+          margin-right: 4%;
+          width: 40%;
+          height: 60%;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           display: block;
           background-color: aqua;
      }
