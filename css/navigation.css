@@ -81,7 +81,6 @@ header a:hover{
         padding-top: 100px;
         padding-right: 55px;
         padding-bottom: 5%;
-        border-radius: 2%;
         background-color: rgba(0, 0, 0, 0.5);
         line-height: 9vh;
         animation: slidein 1s cubic-bezier(0, 0.79, 0.56, 1.01);

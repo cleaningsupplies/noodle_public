@@ -95,7 +95,7 @@ body{
           height: 30vh; 
           border-radius: 10px; 
           position: relative; 
-          z-index: 500;
+          z-index: -1;
      }
 
      .locations_page .content{
