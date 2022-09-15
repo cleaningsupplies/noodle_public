@@ -78,33 +78,24 @@ body{
 }
 
 .location_view_responsive{
-     /*display: none;*/
-     width: 70%;
-     height: 70%;
+     display: none;
 }
 
-#map_responsive{
-     aspect-ratio: 1/1;
-     height: 100%; 
-     border-radius: 20px; 
-     position: relative; 
-     z-index: 500;
-}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1100px) {
 
      .location_view_responsive{
-          margin-left: 4%;
-          margin-right: 4%;
-          width: 40%;
-          height: 60%;
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          display: block;
-          background-color: aqua;
+          margin: 10%;
+          display: inline;
+     }
+
+     #map_responsive{
+          aspect-ratio: 1/1;
+          height: 30vh; 
+          border-radius: 10px; 
+          position: relative; 
+          z-index: 500;
      }
 
      .locations_page .content{

@@ -91,7 +91,7 @@ function addMap(lat, lon, url, topRow, secondRow){
           }
      
           let map = L.map("map").setView([lat, lon], 15);
-          let map_responsive = L.map("map_responsive").setView([lat, lon], 15);
+          let map_responsive = L.map("map_responsive", {zoomControl: false}).setView([lat, lon], 15);
 
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                maxZoom: 18,
@@ -108,5 +108,5 @@ function addMap(lat, lon, url, topRow, secondRow){
 
           let marker_responsive = L.marker([lat, lon]).addTo(map_responsive);
           marker_responsive.bindPopup(`<a target="_blank" rel="noopener noreferrer" class="openMaps" href="${url}"><b>noodlee @</b><br>${topRow}<br>${secondRow}</a>`).openPopup();
-          
+     
 }
