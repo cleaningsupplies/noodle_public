@@ -8,9 +8,9 @@ const site_today = document.querySelector(".today");
 const main_page = document.querySelector(".main_page");
 
 main_page.addEventListener("scroll", scrollSubSite);
-
 homeContent.addEventListener("click", switchSubSite);
 indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
+
 let lastScrollPosition = 0;
 let manualScroll = false;
 
@@ -64,6 +64,7 @@ function handleSafari(e){
       behavior: 'smooth'
     });
   }
+  setTimeout(() => manualScroll=false,200);
 }
 
 function handleOtherBrowsers(e){
