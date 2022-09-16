@@ -7,14 +7,11 @@ const site_history = document.querySelector(".history");
 const site_today = document.querySelector(".today");
 const main_page = document.querySelector(".main_page");
 
-//safari
-document.addEventListener("scroll", scrollSubSite);
-//chrome, edge, firefox, others
-main_page.addEventListener("scroll", scrollSubSiteCE);
+main_page.addEventListener("scroll", scrollSubSite);
 
 homeContent.addEventListener("click", switchSubSite);
 indicators.forEach(indicator => indicator.addEventListener("click", switchSubSite));
-let lastScrollPosition = pageYOffset;
+let lastScrollPosition = 0;
 let manualScroll = false;
 
 window.addEventListener("resize", responsiveSize);
@@ -22,9 +19,54 @@ responsiveSize();
 
 // ** SCROLLING SUBPAGES ON HOMEPAGE **
 
-//chrome, firefox, edge
-function scrollSubSiteCE(e){
+function scrollSubSite(e){
+  if(detectBrowser() === "Safari"){
+    handleSafari(e);
+  }else{
+    handleOtherBrowsers(e);
+  }
+}
+
+function handleSafari(e){
+  let value = "";
+  let position = e.target.scrollTop;
+  //making scroll smoothly 
+  if (position > lastScrollPosition){
+    //scroll down
+    if(position >= site_home.offsetHeight+10){
+      removeActiveSubpage();
+      indicators[2].classList += " active";
+      value = "today";  
+    }else if (position >= 10){
+      removeActiveSubpage();
+      indicators[1].classList += " active";
+      value = "history";  
+    }
+  } else {
+    //scroll up
+    if(position <= site_home.offsetHeight-10){
+      removeActiveSubpage();
+      indicators[0].classList += " active";
+      value = "home";  
+    }else if (position <= (site_home.offsetHeight*2)-10){
+      removeActiveSubpage();
+      indicators[1].classList += " active";
+      value = "history";  
+    }
+  }
+  lastScrollPosition = position <= 0 ? 0 : position; 
   
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    //dont scroll manually
+  }else{
+    e.target.scroll({
+      top: getScrollValue(value),
+      behavior: 'smooth'
+    });
+  }
+}
+
+function handleOtherBrowsers(e){
   let atSnappingPoint = e.target.scrollTop % e.target.offsetHeight === 0;
   let timeOut = atSnappingPoint ? 0 : 100; 
   let value = "";
@@ -68,95 +110,16 @@ function scrollSubSiteCE(e){
 
     main_page.scroll({
       top: getScrollValue(value),
-      left: 0,
       behavior: 'smooth'
     });
   }
 }
 
-function handlePhone(){
-    let position = window.pageYOffset || document.documentElement.scrollTop;
-    //making scroll smoothly 
-    if (position > lastScrollPosition){
-      //scroll down
-      if(window.scrollY >= site_home.offsetHeight+10){
-        removeActiveSubpage();
-        indicators[2].classList += " active";
-        value = "today";  
-      }else if (window.scrollY >= 10){
-        removeActiveSubpage();
-        indicators[1].classList += " active";
-        value = "history";  
-      }
-    } else {
-      //scroll up
-      if(window.scrollY <= site_home.offsetHeight-10){
-        removeActiveSubpage();
-        indicators[0].classList += " active";
-        value = "home";  
-      }else if (window.scrollY <= (site_home.offsetHeight*2)-10){
-        removeActiveSubpage();
-        indicators[1].classList += " active";
-        value = "history";  
-      }
-    }
-    lastScrollPosition = position <= 0 ? 0 : position; 
-}
-
-//safari & firefox
-function scrollSubSite(e){
-  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-    handlePhone();
-  }else{
-    //check if we are on homepage
-    if(items[0].classList.contains("active")){
-      //check if scroll was initated manually
-      if (!manualScroll) {
-        let value = "";
-        let position = window.pageYOffset || document.documentElement.scrollTop;
-        //making scroll smoothly 
-        if (position > lastScrollPosition){
-          //scroll down
-          if(window.scrollY >= site_home.offsetHeight+10){
-            removeActiveSubpage();
-            indicators[2].classList += " active";
-            value = "today";  
-          }else if (window.scrollY >= 10){
-            removeActiveSubpage();
-            indicators[1].classList += " active";
-            value = "history";  
-          }
-        } else {
-          //scroll up
-          if(window.scrollY <= site_home.offsetHeight-10){
-            removeActiveSubpage();
-            indicators[0].classList += " active";
-            value = "home";  
-          }else if (window.scrollY <= (site_home.offsetHeight*2)-10){
-            removeActiveSubpage();
-            indicators[1].classList += " active";
-            value = "history";  
-          }
-        }
-        lastScrollPosition = position <= 0 ? 0 : position; 
-        
-        window.scroll({
-          top: getScrollValue(value),
-          left: 0,
-          behavior: 'smooth'
-        });
-      }
-      setTimeout(() => manualScroll=false,200);
-    }
-  }
-  
-}
-
 //when clicking on indicators switch to chosen subpage
-function switchSubSite(event){
+function switchSubSite(e){
     removeActiveSubpage();
-    event.target.className += " active";
-    let value = event.target.getAttribute("value");
+    e.target.className += " active";
+    let value = e.target.getAttribute("value");
     //exception when clicking on text on homepage/top-subpage
     if(value == null){
       value = "history";
@@ -164,20 +127,11 @@ function switchSubSite(event){
     }
     manualScroll = true;
 
-    //handling crossplattform since using css scroll snap
-    if(detectBrowser() === "Safari"){
-      window.scroll({
-        top: getScrollValue(value),
-        left: 0,
-        behavior: 'smooth'
-      });
-    }else{
-      main_page.scroll({
-        top: getScrollValue(value),
-        left: 0,
-        behavior: 'smooth'
-      });
-    }
+    main_page.scroll({
+      top: getScrollValue(value),
+      behavior: 'smooth'
+    });
+
 }
 
 //retrieving value to which window should be scrolled. Works responsive as well
@@ -246,6 +200,56 @@ function detectBrowser() {
       return 'Unknown';
   }
 } 
+
+
+/*
+//safari & firefox
+function scrollSubSite(){
+
+  console.log("yo")
+    //check if we are on homepage
+    if(items[0].classList.contains("active")){
+      //check if scroll was initated manually
+      if (!manualScroll) {
+        let value = "";
+        let position = window.pageYOffset || document.documentElement.scrollTop;
+        //making scroll smoothly 
+        if (position > lastScrollPosition){
+          //scroll down
+          if(window.scrollY >= site_home.offsetHeight+10){
+            removeActiveSubpage();
+            indicators[2].classList += " active";
+            value = "today";  
+          }else if (window.scrollY >= 10){
+            removeActiveSubpage();
+            indicators[1].classList += " active";
+            value = "history";  
+          }
+        } else {
+          //scroll up
+          if(window.scrollY <= site_home.offsetHeight-10){
+            removeActiveSubpage();
+            indicators[0].classList += " active";
+            value = "home";  
+          }else if (window.scrollY <= (site_home.offsetHeight*2)-10){
+            removeActiveSubpage();
+            indicators[1].classList += " active";
+            value = "history";  
+          }
+        }
+        lastScrollPosition = position <= 0 ? 0 : position; 
+        
+        window.scroll({
+          top: getScrollValue(value),
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
+      setTimeout(() => manualScroll=false,200);
+    }
+
+  
+}*/
 
 
 
